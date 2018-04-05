@@ -17,6 +17,8 @@ public class Test {
 		
 		UsuariosDTO usuarioNuevo = new UsuariosDTO(22, "tglassesguy", 30);
 		
+	//	----------------------------------------------------------------------------------------------------
+		
 		libroFacade.eliminarUsuario(ser.getCon(), usuarioNuevo);
 		
 		List<UsuariosDTO> depto = new ArrayList<UsuariosDTO>(libroFacade.consultarUsuarios(ser.getCon()));
