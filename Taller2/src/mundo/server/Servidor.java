@@ -1,18 +1,15 @@
 package mundo.server;
 
 import java.io.BufferedReader;
-import java.io.Console;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
-
-import org.omg.CORBA.portable.ApplicationException;
-
+import mundo.db.Conexion;
 import mundo.db.Servicio;
 
 public class Servidor {
@@ -22,6 +19,7 @@ public class Servidor {
 	public static void main(String[] args) throws IOException {
 		
 		Servicio ser = new Servicio();
+		Conexion con = ser.getCon();
 		
 		Socket so;
         DataOutputStream salida;
@@ -48,6 +46,7 @@ public class Servidor {
 	        entrada = new BufferedReader( new InputStreamReader(so.getInputStream()));
             
 	        mensajeRecibido = entrada.readLine();
+	        mensajeRecibido = mensajeRecibido.substring(2, mensajeRecibido.length());
 	        
 	        if(mensajeRecibido.contains("FIN"))
 	        {
@@ -58,7 +57,7 @@ public class Servidor {
 	        {
 	        	try {
 	        		
-	        		ser.getCon().ejecutaActualizacion(mensajeRecibido);
+	        		con.ejecutaActualizacion(mensajeRecibido);//TODO - cambiar esto.
 	        		respuesta= "Se ha insertado el elemento.";
 	        		
 	        	}
@@ -71,7 +70,7 @@ public class Servidor {
 	        {
 	        	try {
 	        		
-	        		ser.getCon().ejecutaActualizacion(mensajeRecibido);
+	        		con.ejecutaActualizacion(mensajeRecibido);
 	        		
 	        		respuesta= "Se ha eliminado el elemento.";
 	        	}
@@ -84,7 +83,7 @@ public class Servidor {
 	        {
 	        	try {
 	        		
-	        		ser.getCon().ejecutaActualizacion(mensajeRecibido);
+	        		con.ejecutaActualizacion(mensajeRecibido);
 	        		
 	        		respuesta= "Se ha actualizado el elemento.";
 	        		
@@ -94,13 +93,54 @@ public class Servidor {
 	        		respuesta = e.getMessage();
 	        	}
 	        }
-	        else if(mensajeRecibido.contains("CONSULT")) 
+	        else if(mensajeRecibido.contains("SELECT") && mensajeRecibido.contains("FROM")) 
 	        {
 	        	try {
 	        		
-	        		ser.getCon().ejecutaConsulta(mensajeRecibido);
+	        		ResultSet rs = con.ejecutaConsulta(mensajeRecibido);
+	        		String nuevoMensaje ="";
 	        		
-	        		respuesta= "Se ha actualizado el elemento.";
+	        		
+	        		while (rs.next()) {
+	    				
+	    				nuevoMensaje += "[ "+ rs.getInt(1) +" , "+ rs.getString(2) +" , "+ rs.getString(3) +" , "+ rs.getString(4) + "]"+ '\n';
+	    				
+	    			}
+	        		
+	        		if(nuevoMensaje.isEmpty()) {
+	        			
+	        			respuesta = "Está vacia la tabla.";
+	        			
+	        		}
+	        		else {
+	        			
+	        			respuesta = nuevoMensaje;
+	        			
+	        		}	        		
+	        		
+	        		
+	        	}
+	        	catch(Exception e)
+	        	{
+	        		respuesta = e.getMessage();
+	        	}
+	        }
+	        else if(mensajeRecibido.contains("SELECT") && mensajeRecibido.contains("WHERE")) 
+	        {
+	        		try {
+	        		
+	        		ResultSet rs = con.ejecutaConsulta(mensajeRecibido);
+	        		String nuevoMensaje = "";
+	        		
+	        		
+	        		while (rs.next()) {
+	    				
+	    				nuevoMensaje += "[ "+ rs.getInt(1) +" , "+ rs.getString(2) +" , "+ rs.getString(3) +" , "+ rs.getString(4) +" , "+ " ]"+ '\n';
+	    				
+	    			}
+	        		
+	        		respuesta = nuevoMensaje;
+	        		
 	        		
 	        	}
 	        	catch(Exception e)
@@ -117,7 +157,6 @@ public class Servidor {
 	        
 	    	salida.close();
 	    	entrada.close();
-	       
 		}
         
         so.close();
