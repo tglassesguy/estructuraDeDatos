@@ -10,6 +10,8 @@ import java.net.Socket;
 
 import javax.swing.JOptionPane;
 
+import org.omg.CORBA.portable.ApplicationException;
+
 import mundo.db.Servicio;
 
 public class Servidor {
@@ -25,15 +27,21 @@ public class Servidor {
         BufferedReader entrada;
 
         ServerSocket servidor = new ServerSocket(12345);
-
+        
+        String verificar = " ";
+		boolean iterar = true;
+		
+		
         so = new Socket();
 
         System.out.println("Esperando conexion con el cliente.");
 
-
-        so = servidor.accept();
-        System.out.println("El cliente se ha conectado.");
         
+     
+        System.out.println("El cliente se ha conectado.");
+        while( iterar == true && respuesta == "")
+		{
+        	   so = servidor.accept();
         salida = new DataOutputStream(so.getOutputStream());
         entrada = new BufferedReader( new InputStreamReader(so.getInputStream()));
         
@@ -43,7 +51,13 @@ public class Servidor {
         
         if(mensajeRecibido.contains("FIN"))
         {
-        	respuesta= "Se cerrará el programa.";
+        
+    		
+    		respuesta= "Se cerrará el programa.";
+        	iterar = false;
+        	so.close();
+        	salida.close();
+        	entrada.close();
         }
         else if(mensajeRecibido.contains("INSERTAR"))
         {
@@ -86,17 +100,37 @@ public class Servidor {
         		e.printStackTrace();
         	}
         }
+        else if(mensajeRecibido.contains("CONSULT")) 
+        {
+        	try {
+        		
+        		ser.getCon().ejecutaConsulta(mensajeRecibido);
+        		
+        		respuesta= "Se ha actualizado el elemento.";
+        		
+        	}
+        	catch(Exception e)
+        	{
+        		e.printStackTrace();
+        	}
+        }
         else
         {
         	respuesta= "La operación no correspone a un comando SQL.";
         }
         
-        JOptionPane.showMessageDialog(null, respuesta);
+       
+         
+		
+		//salida.writeUTF(data);
+			salida.flush();
+			
+			salida.close();
+			respuesta ="";
+			
+		
+		}
         
-        salida.close();
-        entrada.close();
-        so.close();
-        servidor.close();
        
 	}
 
