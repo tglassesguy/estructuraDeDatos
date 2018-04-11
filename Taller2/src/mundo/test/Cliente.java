@@ -36,7 +36,9 @@ public class Cliente {
 			System.out.println("Cliente conectado con el servidor.");
 			
 			
-			String data = JOptionPane.showInputDialog("Inserte el COMANDO SQL operación que desea realizar, FIN para salir");
+			String data = JOptionPane.showInputDialog("Inserte el COMANDO SQL operación que desea realizar, FIN para salir" + '\n' +
+														"Insertar: INSERT INTO (Tabla) (column1,column2,...., column N) values(column1,column2,conlumnN)"+ '\n'+
+														"Eliminar: DELETE GROM");
 			data = data.trim().toUpperCase();
 		
 			salida.writeUTF(data);

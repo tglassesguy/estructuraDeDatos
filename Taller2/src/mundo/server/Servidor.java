@@ -141,7 +141,6 @@ public class Servidor {
 	        		
 	        		respuesta = nuevoMensaje;
 	        		
-	        		
 	        	}
 	        	catch(Exception e)
 	        	{
