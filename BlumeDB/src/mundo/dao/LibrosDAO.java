@@ -1,5 +1,6 @@
 package mundo.dao;
 
+
 import java.security.interfaces.RSAKey;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,7 @@ import java.util.List;
 import mundo.db.Conexion;
 import mundo.dto.LibrosDTO;
 import mundo.dto.UsuariosDTO;
+import mundo.pruebas.*;
 
 public class LibrosDAO implements ILibrosDao
 {
@@ -62,6 +64,11 @@ public class LibrosDAO implements ILibrosDao
 		// TODO Auto-generated method stub
 				
 		ResultSet rs = con.ejecutaConsulta(libro.consultarX());
+		contenedor<LibrosDTO> clase = new contenedor<LibrosDTO>();
+		LibrosDTO mau = clase.contenedor(rs, "mundo.dto.LibrosDTO");
+	
+		return mau;
+		/*
 		
 		try {
 			
@@ -83,6 +90,7 @@ public class LibrosDAO implements ILibrosDao
 		}
 		
 		return libro;
+		*/
 		
 	}
 

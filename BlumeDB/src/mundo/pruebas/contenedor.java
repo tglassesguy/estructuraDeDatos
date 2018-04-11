@@ -33,6 +33,7 @@ public class contenedor <K> {
 					}
 					
 				}
+				System.out.println( "acabo: " + data.toString());
 			}
 		} catch (Exception e) {
 			
@@ -51,7 +52,7 @@ public class contenedor <K> {
 		for(int i = 0 ;i < metodos.length && !centry ; i++)
 		{
 			// TODO - Verificar el nombre de la columna (EX: NOMBRE_CASA) 
-			if(metodos[i].getName().equals("set"+nombre)){
+			if(metodos[i].getName().equals( "setIsbn"/*"set"+nombre*/)){
 				
 				resultado = metodos[i];
 				centry = true;
@@ -62,6 +63,8 @@ public class contenedor <K> {
 	
 	public void asignarValor(K clase, Method metodo, Object info) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{
+		
+		//TODO- REVISAR METODO, POSIBLE ERROR.
 		 metodo.invoke(clase, info);	
 	}
 

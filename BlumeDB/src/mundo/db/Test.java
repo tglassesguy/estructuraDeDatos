@@ -16,17 +16,13 @@ public class Test {
 		LibroFacade libroFacade = new LibroFacade();
 		
 		UsuariosDTO usuarioNuevo = new UsuariosDTO(22, "tglassesguy", 30);
+		LibrosDTO busqueda = new LibrosDTO(34,"casa","temp", 1,1,1);
 		
 	//	----------------------------------------------------------------------------------------------------
 		
-		libroFacade.eliminarUsuario(ser.getCon(), usuarioNuevo);
+		LibrosDTO nuevo = libroFacade.consultarLibroPorIsbn(ser.getCon(), busqueda);
 		
-		List<UsuariosDTO> depto = new ArrayList<UsuariosDTO>(libroFacade.consultarUsuarios(ser.getCon()));
 		
-		for (int i = 0; i < depto.size(); i++) 
-		{
-			System.out.println(depto.get(i).toString());
-		}
 		
 	}
 	public static void main(String[] args) {
