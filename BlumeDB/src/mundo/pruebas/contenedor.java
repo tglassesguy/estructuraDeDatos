@@ -1,5 +1,6 @@
 package mundo.pruebas;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -49,6 +50,7 @@ public class contenedor <K> {
 		
 		for(int i = 0 ;i < metodos.length && !centry ; i++)
 		{
+			// TODO - Verificar el nombre de la columna (EX: NOMBRE_CASA) 
 			if(metodos[i].getName().equals("set"+nombre)){
 				
 				resultado = metodos[i];
@@ -58,9 +60,9 @@ public class contenedor <K> {
 		return resultado;
 	}
 	
-	public void asignarValor(K clase, Method metodo, Object info)
+	public void asignarValor(K clase, Method metodo, Object info) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{
-		metodo.invoke(obj, args)
+		 metodo.invoke(clase, info);	
 	}
 
 }
