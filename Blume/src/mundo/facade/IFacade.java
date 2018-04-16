@@ -1,7 +1,7 @@
 package mundo.facade;
 
 import mundo.db.Conexion;
-import mundo.test.Mensaje
+import mundo.test.Mensaje;
 
 public interface IFacade {
 	
