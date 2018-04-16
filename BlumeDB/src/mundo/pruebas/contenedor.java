@@ -7,7 +7,7 @@ import java.sql.ResultSetMetaData;
 
 public class contenedor <K> {
 	
-	public K contenedor(ResultSet rs, String clase) {
+	public K crear(ResultSet rs, String clase) {
 		
 		K data = null;
 		ResultSetMetaData metaDatos;
@@ -67,5 +67,4 @@ public class contenedor <K> {
 		//TODO- REVISAR METODO, POSIBLE ERROR.
 		 metodo.invoke(clase, info);	
 	}
-
 }
