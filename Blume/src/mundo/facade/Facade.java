@@ -81,6 +81,7 @@ public class Facade implements IFacade {
 		
 		if(sms.getMensaje().contains("ARTICULOS")) 
 		{
+		
 			articuloDao.consultarTodos(con, sms);
 		}
 		else 
