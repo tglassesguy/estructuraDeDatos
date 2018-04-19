@@ -2,21 +2,40 @@ package mundo.test;
 
 public class Mensaje {
 	
-	String mensaje ;
+	String funcion;
+	String tabla;
+	String datos;
 	
-	public Mensaje(String pMensaje)
+	public Mensaje(String pFuncion, String pTabla, String pDatos)
 	{
-		mensaje = pMensaje;
+		funcion = pFuncion;
+		tabla = pTabla;
+		datos = pDatos;
+		
 	}
-	
-	public String getMensaje()
-	{
-		return mensaje;
+
+	public String getFuncion() {
+		return funcion;
 	}
-	
-	public void setMensaje( String pMensaje)
-	{
-		mensaje = pMensaje;
+
+	public void setFuncion(String funcion) {
+		this.funcion = funcion;
+	}
+
+	public String getTabla() {
+		return tabla;
+	}
+
+	public void setTabla(String tabla) {
+		this.tabla = tabla;
+	}
+
+	public String getDatos() {
+		return datos;
+	}
+
+	public void setDatos(String datos) {
+		this.datos = datos;
 	}
 
 }

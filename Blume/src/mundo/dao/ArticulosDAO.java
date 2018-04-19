@@ -18,7 +18,7 @@ public class ArticulosDAO implements IDao {
 	@Override
 	public void eliminar(Conexion con, Mensaje men) {
 		// TODO Auto-generated method stub
-		
+			 
 		con.ejecutaActualizacion(men.getMensaje());
 		
 	}

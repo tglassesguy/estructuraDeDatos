@@ -20,9 +20,9 @@ public class Facade implements IFacade {
 
 	@Override
 	public void insertar(Conexion con, Mensaje sms) {
-		// TODO Auto-generated method stub
+		// TODO VERIFICAR SI SE VA A USAR ENUM O NO.
 		
-		if(sms.getMensaje().contains("ARTICULOS"))
+		if(sms.getFuncion().equals("INSERTAR"))
 		{
 			articuloDao.insertar(con, sms);
 		}
