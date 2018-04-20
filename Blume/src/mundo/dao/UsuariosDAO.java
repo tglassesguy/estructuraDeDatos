@@ -31,7 +31,7 @@ public class UsuariosDAO implements IDao{
 		// TODO Auto-generated method stub
 		
 		UsuariosDTO temp = new UsuariosDTO();
-		temp.setCodigo(men.getIdUsuario());
+		temp.setID(men.getIdUsuario());
 	
 		con.ejecutaActualizacion(temp.eliminar());
 		
@@ -57,7 +57,7 @@ public class UsuariosDAO implements IDao{
 		// TODO implementar try-catch
 		
 		UsuariosDTO temp = new UsuariosDTO();
-		temp.setCodigo(men.getIdUsuario());
+		temp.setID(men.getIdUsuario());
 		
 		ResultSet rs = (ResultSet) con.ejecutaConsulta(temp.consultarPorID());
 		

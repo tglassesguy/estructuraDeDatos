@@ -64,14 +64,14 @@ public class UsuariosDTO implements IDto
 	@Override
 	public String insertar() {
 		// TODO Auto-generated method stub
-		return "INSERT INTO USUARIOS (ID_USER, USERNAME, NOMBRE, PAIS)VALUES ('+id+','"+username.trim()+"','"+nombre.trim()+"','"+pais.trim()+"')";
+		return "INSERT INTO USUARIOS (ID_USER, USERNAME, NOMBRE, PAIS)VALUES ("+id+",'"+username.trim()+"','"+nombre.trim()+"','"+pais.trim()+"')";
 
 	}
 
 	@Override
 	public String eliminar() {
 		// TODO Auto-generated method stub
-		return "DELETE FROM USUARIOS a WHERE a.ID_USER =" +id;
+		return "DELETE FROM USUARIOS WHERE ID_USER =" +id;
 	}
 
 	@Override
