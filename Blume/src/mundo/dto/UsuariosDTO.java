@@ -64,20 +64,20 @@ public class UsuariosDTO implements IDto
 	@Override
 	public String insertar() {
 		// TODO Auto-generated method stub
-		return "INSERT INTO USUARIOS (ID_USER, USERNAME, NOMBRE, PAIS)VALUES ('+id+','"+userName.trim()+"','"+nombre.trim()+"','"+pais.trim()+"')";
+		return "INSERT INTO USUARIOS (ID_USER, USERNAME, NOMBRE, PAIS)VALUES ('+id+','"+username.trim()+"','"+nombre.trim()+"','"+pais.trim()+"')";
 
 	}
 
 	@Override
 	public String eliminar() {
 		// TODO Auto-generated method stub
-		return "DELETE FROM USUARIOS a WHERE a.ID_USER =" +codigo;
+		return "DELETE FROM USUARIOS a WHERE a.ID_USER =" +id;
 	}
 
 	@Override
 	public String actualizar() {
 		// TODO Auto-generated method stub
-		return "UPDATE USUARIOS a SET ID_USER = '+codigo+',USERNAME = '"+userName.trim()+"',NOMBRE = '"+nombre.trim()+"',PAIS = '"+pais.trim()+"'WHERE ID_USER ="+codigo;
+		return "UPDATE USUARIOS a SET ID_USER = '+codigo+',USERNAME = '"+username.trim()+"',NOMBRE = '"+nombre.trim()+"',PAIS = '"+pais.trim()+"'WHERE ID_USER ="+id;
 
 	}
 
@@ -90,7 +90,7 @@ public class UsuariosDTO implements IDto
 	@Override
 	public String consultarPorID() {
 		// TODO Auto-generated method stub
-		return "SELECT CODIGO, USERNAME, NOMBRE, PAIS FROM ARTICULOS WHERE ID_ARTICULO ="+codigo;
+		return "SELECT CODIGO, USERNAME, NOMBRE, PAIS FROM ARTICULOS WHERE ID_ARTICULO ="+id;
 	}
 
 }
