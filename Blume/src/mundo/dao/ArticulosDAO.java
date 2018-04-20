@@ -4,23 +4,35 @@ import javax.resource.cci.ResultSet;
 
 import mundo.db.Conexion;
 import mundo.dto.ArticulosDTO;
+import mundo.test.Contenedor;
 import mundo.test.Mensaje;
+import mundo.test.Nodo;
 
-public class ArticulosDAO implements IDao {
+public class ArticulosDAO implements IDao {	
 
 	@Override
 	public void insertar(Conexion con, Mensaje men) {
 		// TODO Auto-generated method stub
 		
-		con.ejecutaActualizacion();		
+		int id = men.getIdUsuario(); 
+		String titulo = men.getTituloArticulo();
+		int autor = men.getIdArticulo();
+		String fecha = men.getFechaArticulo();
+		
+		ArticulosDTO temp = new ArticulosDTO(id, titulo, autor, fecha);
+		
+		con.ejecutaActualizacion(temp.insertar());		
 		
 	}
 
 	@Override
 	public void eliminar(Conexion con, Mensaje men) {
 		// TODO Auto-generated method stub
-			 
-		con.ejecutaActualizacion(men.getMensaje());
+		
+		ArticulosDTO temp = new ArticulosDTO();
+		temp.setId(men.getIdArticulo());
+		
+		con.ejecutaActualizacion(temp.eliminar());
 		
 	}
 
@@ -28,23 +40,43 @@ public class ArticulosDAO implements IDao {
 	public void actualizar(Conexion con, Mensaje men) {
 		// TODO Auto-generated method stub
 		
-		con.ejecutaActualizacion(men.getMensaje());
+		int id = men.getIdUsuario(); 
+		String titulo = men.getTituloArticulo();
+		int autor = men.getIdArticulo();
+		String fecha = men.getFechaArticulo();
+		
+		ArticulosDTO temp = new ArticulosDTO(id, titulo, autor, fecha);
+		
+		con.ejecutaActualizacion(temp.actualizar());
 		
 	}
 
 	@Override
-	public void consultar(Conexion con, Mensaje men) {
+	public Nodo consultar(Conexion con, Mensaje men) {
 		// TODO Auto-generated method stub
 		
-		ResultSet rs = (ResultSet) con.ejecutaConsulta(men.getMensaje());
+		ArticulosDTO temp = new ArticulosDTO();
+		temp.setId(men.getIdArticulo());
+		
+		ResultSet rs = (ResultSet) con.ejecutaConsulta(temp.consultarPorID());
+		
+		Nodo contenedor = new Contenedor<>().crear(rs, "mundo.dto.ArticulosDTO");
+		
+		return contenedor;
 		
 	}
 
 	@Override
-	public void consultarTodos(Conexion con, Mensaje men) {
+	public Nodo consultarTodos(Conexion con, Mensaje men) {
 		// TODO Auto-generated method stub
 		
-		ResultSet rs = (ResultSet) con.ejecutaConsulta(men.getMensaje());
+		ArticulosDTO temp = new ArticulosDTO();
+		
+		ResultSet rs = (ResultSet) con.ejecutaConsulta(temp.consultarPorID());
+		
+		Nodo contenedor = new Contenedor<>().crear(rs, "mundo.dto.ArticulosDTO");
+		
+		return contenedor;
 		
 		
 	}

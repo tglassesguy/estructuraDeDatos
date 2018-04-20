@@ -30,7 +30,7 @@ public class Mensaje {
 		this.paisUsuario = pPais;
 		
 	}
-	
+
 	public void funcionArticulo(Funcion pFuncion, int pId, String pTitulo, int pAutor, String pFecha )
 	{
 		tabla = Tabla.ARTICULOS;
@@ -41,6 +41,87 @@ public class Mensaje {
 		this.fechaArticulo = pFecha;
 		
 	}
+	
+	public Funcion getFuncion() {
+		return funcion;
+	}
+
+	public void setFuncion(Funcion funcion) {
+		this.funcion = funcion;
+	}
+
+	public Tabla getTabla() {
+		return tabla;
+	}
+
+	public void setTabla(Tabla tabla) {
+		this.tabla = tabla;
+	}
+
+	public int getIdArticulo() {
+		return idArticulo;
+	}
+
+	public void setIdArticulo(int idArticulo) {
+		this.idArticulo = idArticulo;
+	}
+
+	public String getTituloArticulo() {
+		return tituloArticulo;
+	}
+
+	public void setTituloArticulo(String tituloArticulo) {
+		this.tituloArticulo = tituloArticulo;
+	}
+
+	public int getAutorArticulo() {
+		return autorArticulo;
+	}
+
+	public void setAutorArticulo(int autorArticulo) {
+		this.autorArticulo = autorArticulo;
+	}
+
+	public String getFechaArticulo() {
+		return fechaArticulo;
+	}
+
+	public void setFechaArticulo(String fechaArticulo) {
+		this.fechaArticulo = fechaArticulo;
+	}
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public String getUsernameUsuario() {
+		return usernameUsuario;
+	}
+
+	public void setUsernameUsuario(String usernameUsuario) {
+		this.usernameUsuario = usernameUsuario;
+	}
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+	public String getPaisUsuario() {
+		return paisUsuario;
+	}
+
+	public void setPaisUsuario(String paisUsuario) {
+		this.paisUsuario = paisUsuario;
+	}
+
 	
 	
 
