@@ -3,7 +3,9 @@ package mundo.facade;
 import mundo.dao.ArticulosDAO;
 import mundo.dao.UsuariosDAO;
 import mundo.db.Conexion;
+import mundo.test.Funcion;
 import mundo.test.Mensaje;
+import mundo.test.Tabla;
 
 public class Facade implements IFacade {
 	
@@ -22,7 +24,7 @@ public class Facade implements IFacade {
 	public void insertar(Conexion con, Mensaje sms) {
 		// TODO VERIFICAR SI SE VA A USAR ENUM O NO.
 		
-		if(sms.getFuncion().equals("INSERTAR"))
+		if(sms.getTabla().equals(Tabla.ARTICULOS))
 		{
 			articuloDao.insertar(con, sms);
 		}
@@ -36,7 +38,7 @@ public class Facade implements IFacade {
 	public void eliminar(Conexion con, Mensaje sms) {
 		// TODO Auto-generated method stub
 		
-		if(sms.getMensaje().contains("ARTICULOS"))
+		if(sms.getTabla().equals(Tabla.ARTICULOS))
 		{
 			articuloDao.eliminar(con, sms);
 		}
@@ -49,7 +51,7 @@ public class Facade implements IFacade {
 	@Override
 	public void actualizar(Conexion con, Mensaje sms) {
 		// TODO Auto-generated method stub
-		if(sms.getMensaje().contains("ARTICULOS"))
+		if(sms.getTabla().equals(Tabla.ARTICULOS))
 		{
 			articuloDao.actualizar(con, sms);
 		}
@@ -64,7 +66,7 @@ public class Facade implements IFacade {
 	public void consultar(Conexion con, Mensaje sms) {
 		// TODO HACER RETURN DEL NODO.
 		
-		if(sms.getMensaje().contains("ARTICULOS")) 
+		if(sms.getTabla().equals(Tabla.ARTICULOS)) 
 		{
 			articuloDao.consultar(con, sms);
 		}
@@ -79,7 +81,7 @@ public class Facade implements IFacade {
 	public void consultarTodos(Conexion con, Mensaje sms) {
 		// TODO HACER RETURN DEL NODO.
 		
-		if(sms.getMensaje().contains("ARTICULOS")) 
+		if(sms.getTabla().equals(Tabla.ARTICULOS)) 
 		{
 		
 			articuloDao.consultarTodos(con, sms);

@@ -2,40 +2,48 @@ package mundo.test;
 
 public class Mensaje {
 	
-	String funcion;
-	String tabla;
-	String datos;
+	Funcion funcion;
+	Tabla tabla;
 	
-	public Mensaje(String pFuncion, String pTabla, String pDatos)
+	int idArticulo;
+	String tituloArticulo;
+	int autorArticulo;
+	String fechaArticulo;
+	
+	int idUsuario;
+	String usernameUsuario;
+	String nombreUsuario;
+	String paisUsuario;
+	
+	public Mensaje()
 	{
+	
+	}
+	
+	public void funcionUsuario(Funcion pFuncion, int pId, String pUsername, String pNombre, String pPais )
+	{
+		tabla = Tabla.USUARIOS;
 		funcion = pFuncion;
-		tabla = pTabla;
-		datos = pDatos;
+		this.idUsuario = pId;
+		this.usernameUsuario = pUsername;
+		this.nombreUsuario = pNombre;
+		this.paisUsuario = pPais;
 		
 	}
-
-	public String getFuncion() {
-		return funcion;
+	
+	public void funcionArticulo(Funcion pFuncion, int pId, String pTitulo, int pAutor, String pFecha )
+	{
+		tabla = Tabla.ARTICULOS;
+		funcion = pFuncion;
+		this.idArticulo = pId;
+		this.tituloArticulo = pTitulo;
+		this.autorArticulo = pAutor;
+		this.fechaArticulo = pFecha;
+		
 	}
+	
+	
 
-	public void setFuncion(String funcion) {
-		this.funcion = funcion;
-	}
-
-	public String getTabla() {
-		return tabla;
-	}
-
-	public void setTabla(String tabla) {
-		this.tabla = tabla;
-	}
-
-	public String getDatos() {
-		return datos;
-	}
-
-	public void setDatos(String datos) {
-		this.datos = datos;
-	}
+	
 
 }

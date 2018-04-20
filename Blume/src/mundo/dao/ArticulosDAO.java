@@ -3,6 +3,7 @@ package mundo.dao;
 import javax.resource.cci.ResultSet;
 
 import mundo.db.Conexion;
+import mundo.dto.ArticulosDTO;
 import mundo.test.Mensaje;
 
 public class ArticulosDAO implements IDao {
@@ -11,7 +12,7 @@ public class ArticulosDAO implements IDao {
 	public void insertar(Conexion con, Mensaje men) {
 		// TODO Auto-generated method stub
 		
-		con.ejecutaActualizacion(men.getMensaje());		
+		con.ejecutaActualizacion();		
 		
 	}
 
