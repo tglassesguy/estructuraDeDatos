@@ -27,7 +27,7 @@ public class Servidor {
 		Nodo respuesta;
 		BufferedReader in;
 		
-		ServerSocket servidor = new ServerSocket(PUERTO);
+		//ServerSocket servidor = new ServerSocket(PUERTO);
 		
 		
 		

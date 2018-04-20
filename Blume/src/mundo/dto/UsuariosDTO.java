@@ -3,8 +3,8 @@ package mundo.dto;
 public class UsuariosDTO implements IDto
 {
 	
-	private int codigo;
-	private String userName; 
+	private int id;
+	private String username; 
 	private String nombre;
 	private String pais;
 
@@ -13,14 +13,14 @@ public class UsuariosDTO implements IDto
 		//Easter egg 0.
 	}
 	
-	public UsuariosDTO(int pCodigo,String pUserName ,String pNombre, String pPais)
+	public UsuariosDTO(int pID,String pUserName ,String pNombre, String pPais)
 	{
 		super();
 		
 		this.nombre = pNombre;
-		this.codigo = pCodigo;
+		this.id = pID;
 		this.pais = pPais;
-		this.userName = pUserName;
+		this.username = pUserName;
 		
 	}
 
@@ -33,19 +33,19 @@ public class UsuariosDTO implements IDto
 	}
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
 	public void setUserName(String username) {
-		this.userName = userName;
+		this.username = username;
 	}
 	
-	public int getCodigo() {
-		return codigo;
+	public int getID() {
+		return id;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setID(int ID) {
+		this.id = ID;
 	}
 
 	public String getPais() {
