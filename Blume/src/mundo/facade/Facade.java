@@ -5,6 +5,7 @@ import mundo.dao.UsuariosDAO;
 import mundo.db.Conexion;
 import mundo.test.Funcion;
 import mundo.test.Mensaje;
+import mundo.test.Nodo;
 import mundo.test.Tabla;
 
 public class Facade implements IFacade {
@@ -63,41 +64,41 @@ public class Facade implements IFacade {
 	}
 
 	@Override
-	public void consultar(Conexion con, Mensaje sms) {
+	public Nodo consultar(Conexion con, Mensaje sms) {
 		// TODO HACER RETURN DEL NODO.
+		
+		Nodo nodo = new Nodo();
 		
 		if(sms.getTabla().equals(Tabla.ARTICULOS)) 
 		{
-			articuloDao.consultar(con, sms);
+			nodo = articuloDao.consultar(con, sms);
 		}
 		else
 		{
-			usuarioDao.consultar(con, sms);
+			nodo = usuarioDao.consultar(con, sms);
 		}
+		
+		return nodo;
 		
 	}
 
 	@Override
-	public void consultarTodos(Conexion con, Mensaje sms) {
+	public Nodo consultarTodos(Conexion con, Mensaje sms) {
 		// TODO HACER RETURN DEL NODO.
+		
+		Nodo nodo = new Nodo();
 		
 		if(sms.getTabla().equals(Tabla.ARTICULOS)) 
 		{
-		
-			articuloDao.consultarTodos(con, sms);
+			nodo = articuloDao.consultarTodos(con, sms);	
 		}
 		else 
 		{
-			usuarioDao.consultarTodos(con, sms);
-			
+			nodo = usuarioDao.consultarTodos(con, sms);
 		}
 		
+		return nodo;
+		
 	}
-	
-	
-	
-	
-	
-	
 
 }

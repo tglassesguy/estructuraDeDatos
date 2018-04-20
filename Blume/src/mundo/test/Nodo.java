@@ -1,32 +1,29 @@
 package mundo.test;
 
-public class Nodo {
+public class Nodo<T> {
 	
-	Object cabeza;
-	Object siguiente;
+	T valor;
+	Nodo<T> siguiente;
 	
 	public Nodo()
 	{
 		siguiente = null;
 	}
-
-	public Object getCabeza() {
-		return cabeza;
+	
+	public T getValor() {
+		return valor;
 	}
 
-	public void setCabeza(Object cabeza) {
-		this.cabeza = cabeza;
+	public void setValor(T valor) {
+		this.valor = valor;
 	}
 
-	public Object getSiguiente() {
+	public Nodo<T> getSiguiente() {
 		return siguiente;
 	}
 
-	public void setSiguiente(Object siguiente) {
+	public void setSiguiente(Nodo<T> siguiente) {
 		this.siguiente = siguiente;
 	}
-	
-	
-
 	
 }

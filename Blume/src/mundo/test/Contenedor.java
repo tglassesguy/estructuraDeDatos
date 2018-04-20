@@ -7,11 +7,17 @@ import java.sql.ResultSetMetaData;
 
 public class Contenedor <K> {
 	
+	Nodo<K> cabeza;
+	
+	public Contenedor()
+	{
+		cabeza = null;
+	}
+	
 	public Nodo crear(ResultSet rs, String clase) {
 		
 		K data = null;
 		ResultSetMetaData metaDatos;
-		Nodo nodo = new Nodo();
 		
 		
 		try {
@@ -25,9 +31,17 @@ public class Contenedor <K> {
 			
 			while(rs.next())
 			{
-				for(int i = 1; i < numColums ; i++) 
+				for(int i = 1; i <= numColums ; i++) 
 				{
-					Method metodo = buscarMetodo(metaDatos.getColumnName(i), metodos);
+					String nombreColumna = metaDatos.getColumnName(i);
+					
+					if(nombreColumna.contains("_"))
+					{
+						int num = nombreColumna.indexOf('_');
+						nombreColumna = nombreColumna.substring(0, num);
+					}
+					
+					Method metodo = buscarMetodo(nombreColumna, metodos);
 					
 					if(metodo != null) {
 						
@@ -36,15 +50,31 @@ public class Contenedor <K> {
 					
 				}
 				
-				if(nodo.getCabeza() == null)
-				{
-					nodo.setCabeza(data);
-				}
-				else 
-				{
-					nodo.setSiguiente(data);
-					nodo = (Nodo) nodo.getSiguiente();
-				}
+		        if (cabeza == null)
+		        {
+		            Nodo<K> temp = new Nodo<K>();
+		            temp.setValor(data);
+		            
+		            cabeza = temp;
+					data = (K) Class.forName(clase).newInstance();
+		            
+		        }
+		        else
+		        {
+		            Nodo<K> actual = cabeza;
+
+		            while (actual.getSiguiente() != null)
+		            {
+		                actual = actual.getSiguiente();
+		            }
+		            
+		            Nodo<K> nuevo = new Nodo<K>();
+		            nuevo.setValor(data);
+		            
+		            actual.setSiguiente(nuevo);
+					data = (K) Class.forName(clase).newInstance();
+
+		        }				
 			}
 			
 		} catch (Exception e) {
@@ -53,7 +83,8 @@ public class Contenedor <K> {
 
 		}
 		
-		return nodo;
+		System.out.println("Se va a retornar un nodo.");
+		return cabeza;
 	}
 	
 	public Method buscarMetodo(String nombre, Method[] metodos)
@@ -61,10 +92,12 @@ public class Contenedor <K> {
 		Method resultado = null;
 		boolean centry = false;
 		
+		String nuevoNombre = "set"+nombre; //setFECHA
+		
 		for(int i = 0 ;i < metodos.length && !centry ; i++)
 		{
 			// TODO - Verificar el nombre de la columna (EX: NOMBRE_CASA) 
-			if(metodos[i].getName().equals( "setIsbn"/*"set"+nombre*/)){
+			if(metodos[i].getName().compareToIgnoreCase(nuevoNombre) == 0){
 				
 				resultado = metodos[i];
 				centry = true;
@@ -78,5 +111,15 @@ public class Contenedor <K> {
 		
 		//TODO- REVISAR METODO, POSIBLE ERROR.
 		 metodo.invoke(clase, info);	
+	}
+	
+	public Nodo<K> getCabeza()
+	{
+		return cabeza;
+	}
+	
+	public void setCabeza( Nodo<K> pCabeza)
+	{
+		cabeza = pCabeza;
 	}
 }

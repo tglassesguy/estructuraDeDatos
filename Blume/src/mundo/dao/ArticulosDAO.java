@@ -14,7 +14,7 @@ public class ArticulosDAO implements IDao {
 	public void insertar(Conexion con, Mensaje men) {
 		// TODO Auto-generated method stub
 		
-		int id = men.getIdUsuario(); 
+		int id = men.getIdArticulo(); 
 		String titulo = men.getTituloArticulo();
 		int autor = men.getIdArticulo();
 		String fecha = men.getFechaArticulo();
@@ -63,7 +63,7 @@ public class ArticulosDAO implements IDao {
 		Nodo contenedor = new Contenedor<>().crear(rs, "mundo.dto.ArticulosDTO");
 		
 		return contenedor;
-		
+	
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class ArticulosDAO implements IDao {
 		
 		ArticulosDTO temp = new ArticulosDTO();
 		
-		ResultSet rs = (ResultSet) con.ejecutaConsulta(temp.consultarPorID());
+		java.sql.ResultSet rs = con.ejecutaConsulta(temp.consultar());
 		
 		Nodo contenedor = new Contenedor<>().crear(rs, "mundo.dto.ArticulosDTO");
 		

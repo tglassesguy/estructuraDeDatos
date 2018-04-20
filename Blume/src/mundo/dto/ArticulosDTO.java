@@ -60,19 +60,11 @@ public class ArticulosDTO implements IDto
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-
-	
-	
-	
-	
-	
-	
-	
 	
 	@Override
 	public String insertar() {
 		// TODO Auto-generated method stub
-		return "INSERT INTO ARTICULOS (ID_ARTICULO, TITULO, AUTOR, FECHA_PUBLICACION)VALUES ("+id+",'"+titulo.trim()+"',"+autor+","+fecha+")";
+		return "INSERT INTO ARTICULOS (ID_ARTICULO, TITULO, AUTOR, FECHA_PUBLICACION)VALUES ("+id+",'"+titulo.trim()+"',"+autor+",'"+fecha.trim()+"')";
 
 	}
 
@@ -103,5 +95,9 @@ public class ArticulosDTO implements IDto
 		return "SELECT ID, TITULO, AUTOR, FECHA FROM ARTICULOS WHERE ID_ARTICULO ="+id;
 	}
 	
+	public String toString()
+	{ 
+		return id + titulo + autor + fecha;
+	}
 
 }
