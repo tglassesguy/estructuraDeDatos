@@ -43,13 +43,13 @@ public class Test {
 		/*mensaje.funcionArticulo(Funcion.INSERT, 8 , "casa", 2 , "19/19/1999");
 		facade.insertar(servicio.getCon(), mensaje);*/
 		
-//		nodo = facade.consultarTodos(servicio.getCon(), mensaje);
-//		
-//		while(nodo != null)
-//		{
-//			System.out.println(nodo.getValor().toString());
-//			nodo = nodo.getSiguiente();
-//		}
+		nodo = facade.consultarTodos(servicio.getCon(), mensaje);
+		
+		while(nodo != null)
+		{
+			System.out.println(nodo.getValor().toString());
+			nodo = nodo.getSiguiente();
+		}
 		
 		
 		

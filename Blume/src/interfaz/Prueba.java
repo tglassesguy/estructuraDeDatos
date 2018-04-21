@@ -31,6 +31,9 @@ public class Prueba extends JFrame implements ActionListener
      * Comando Opción 2
      */
     private static final String OPCION_2 = "OPCION_2";
+    
+    
+    private static final String OPCION_3 = "OPCION_3";
 
     
     private Facade facade;
@@ -43,6 +46,9 @@ public class Prueba extends JFrame implements ActionListener
      * Botón Opción 2
      */
     private JButton btnOpcion2;
+    
+    
+    private JButton btnOpcion3;
 
     
     private JLabel lblId;
@@ -64,7 +70,7 @@ public class Prueba extends JFrame implements ActionListener
 		setSize(250, 200);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLayout(new GridLayout(5,2));
+		setLayout(new GridLayout(6,2));
 		
 		lblNombre = new JLabel("Nombre");
 		lblUserName = new JLabel ("User Name");
@@ -87,6 +93,11 @@ public class Prueba extends JFrame implements ActionListener
         btnOpcion2.setActionCommand( OPCION_2 );
         btnOpcion2.addActionListener( this );
        
+        btnOpcion3 = new JButton( "Consultar" );
+        btnOpcion3.setActionCommand( OPCION_3);
+        btnOpcion3.addActionListener( this );
+        
+        
         add(lblId);
         add(txtID);
         
@@ -101,6 +112,7 @@ public class Prueba extends JFrame implements ActionListener
         
         add( btnOpcion1 );
         add(btnOpcion2);
+        add( btnOpcion3 );
     
 	}
 
@@ -123,6 +135,7 @@ public class Prueba extends JFrame implements ActionListener
 		String nombre = txtNombre.getText();
 		String userName = txtUserName.getText();
 		String pais = txtPais.getText();
+		
 			if(OPCION_1.equals(comando))
 			{
 				Mensaje mensaje =  new Mensaje();
@@ -131,13 +144,26 @@ public class Prueba extends JFrame implements ActionListener
 				facade.insertar(servicio.getCon(), mensaje);
 				JOptionPane.showMessageDialog(null, "Se inserto");
 			}
-			if(OPCION_2.equals(evento))
+			if(OPCION_2.equals(comando))
 			{
 				Mensaje mensaje =  new Mensaje();
 				
 				mensaje.funcionUsuario(Funcion.DELETE, ID, "", "", "");
 				facade.eliminar(servicio.getCon(), mensaje);
 				JOptionPane.showMessageDialog(null, "Se Elimino");
+			}
+			if(OPCION_3.equals(comando))
+			{
+				Mensaje mensaje =  new Mensaje();
+				
+				nodo = facade.consultarTodos(servicio.getCon(), mensaje);
+				
+				while(nodo != null)
+				{
+					System.out.println(nodo.getValor().toString());
+					nodo = nodo.getSiguiente();
+				}
+
 			}
 		
 		
