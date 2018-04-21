@@ -37,7 +37,7 @@ public class Test {
 		mensaje.funcionUsuario(Funcion.DELETE, 2, "", "", "");
 		facade.eliminar(servicio.getCon(), mensaje);
 		
-		mensaje.funcionUsuario(Funcion.DELETE, 3, "", "", "");
+		mensaje.funcionUsuario(Funcion.DELETE, 4, "", "", "");
 		facade.eliminar(servicio.getCon(), mensaje);
 		
 		/*mensaje.funcionArticulo(Funcion.INSERT, 8 , "casa", 2 , "19/19/1999");
