@@ -1,6 +1,11 @@
 package mundo.test;
 
-public class Mensaje {
+import java.io.Serializable;
+
+public class Mensaje implements Serializable {
+	 
+	private static final long serialVersionUID = -5399605122490343339L;
+	
 	
 	Funcion funcion;
 	Tabla tabla;

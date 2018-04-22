@@ -1,8 +1,11 @@
 package mundo.dto;
 
-public class UsuariosDTO implements IDto
+import java.io.Serializable;
+
+public class UsuariosDTO implements IDto, Serializable
 {
-	
+	private static final long serialVersionUID = -5399605122490343339L;
+
 	private int id;
 	private String username; 
 	private String nombre;
@@ -13,12 +16,12 @@ public class UsuariosDTO implements IDto
 		//Easter egg 0.
 	}
 	
-	public UsuariosDTO(int pID,String pUserName ,String pNombre, String pPais)
+	public UsuariosDTO(int pId,String pUserName ,String pNombre, String pPais)
 	{
 		super();
 		
 		this.nombre = pNombre;
-		this.id = pID;
+		this.id = pId;
 		this.pais = pPais;
 		this.username = pUserName;
 		
@@ -40,12 +43,12 @@ public class UsuariosDTO implements IDto
 		this.username = username;
 	}
 	
-	public int getID() {
+	public int getId() {
 		return id;
 	}
 
-	public void setID(int ID) {
-		this.id = ID;
+	public void setId(int pId) {
+		this.id = pId;
 	}
 
 	public String getPais() {
@@ -53,12 +56,8 @@ public class UsuariosDTO implements IDto
 	}
 
 	public void setPais(String pPais) {
-		this.pais = pais;
+		this.pais = pPais;
 	}
-
-	
-	
-	
 	
 	
 	@Override
@@ -90,7 +89,12 @@ public class UsuariosDTO implements IDto
 	@Override
 	public String consultarPorID() {
 		// TODO Auto-generated method stub
-		return "SELECT CODIGO, USERNAME, NOMBRE, PAIS FROM ARTICULOS WHERE ID_ARTICULO ="+id;
+		return "SELECT CODIGO, USERNAME, NOMBRE, PAIS FROM ARTICULOS WHERE ID_ARTICULO = "+id;
+	}
+	
+	public String toString()
+	{
+		return "[ ID: " + id + " | " + "Username: " + username + " | " + "Nombre: " + nombre + " | " + "Pais: " + pais + " ]";
 	}
 
 }

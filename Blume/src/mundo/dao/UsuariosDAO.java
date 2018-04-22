@@ -1,6 +1,6 @@
 package mundo.dao;
 
-import javax.resource.cci.ResultSet;
+import java.sql.ResultSet;
 
 import mundo.db.Conexion;
 import mundo.dto.ArticulosDTO;
@@ -31,7 +31,7 @@ public class UsuariosDAO implements IDao{
 		// TODO Auto-generated method stub
 		
 		UsuariosDTO temp = new UsuariosDTO();
-		temp.setID(men.getIdUsuario());
+		temp.setId(men.getIdUsuario());
 	
 		con.ejecutaActualizacion(temp.eliminar());
 		
@@ -57,9 +57,9 @@ public class UsuariosDAO implements IDao{
 		// TODO implementar try-catch
 		
 		UsuariosDTO temp = new UsuariosDTO();
-		temp.setID(men.getIdUsuario());
+		temp.setId(men.getIdUsuario());
 		
-		ResultSet rs = (ResultSet) con.ejecutaConsulta(temp.consultarPorID());
+		ResultSet rs =  con.ejecutaConsulta(temp.consultarPorID());
 		
 		Nodo contenedor = new Contenedor<>().crear(rs, "mundo.dto.UsuariosDTO");
 		
@@ -74,7 +74,7 @@ public class UsuariosDAO implements IDao{
 		
 		UsuariosDTO temp = new UsuariosDTO();
 		
-		ResultSet rs = (ResultSet) con.ejecutaConsulta(temp.consultarPorID());
+		ResultSet rs =  con.ejecutaConsulta(temp.consultar());
 		
 		Nodo contenedor = new Contenedor<>().crear(rs, "mundo.dto.UsuariosDTO");
 		

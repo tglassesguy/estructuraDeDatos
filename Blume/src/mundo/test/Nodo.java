@@ -1,6 +1,10 @@
 package mundo.test;
 
-public class Nodo<T> {
+import java.io.Serializable;
+
+public class Nodo<T> implements Serializable {
+	
+	private static final long serialVersionUID = -5399605122490343339L;
 	
 	T valor;
 	Nodo<T> siguiente;

@@ -18,6 +18,7 @@ import mundo.facade.Facade;
 import mundo.test.Funcion;
 import mundo.test.Mensaje;
 import mundo.test.Nodo;
+import mundo.test.Tabla;
 
 public class Prueba extends JFrame implements ActionListener
 {
@@ -50,7 +51,6 @@ public class Prueba extends JFrame implements ActionListener
     
     private JButton btnOpcion3;
 
-    
     private JLabel lblId;
     private JLabel lblUserName;
     private JLabel lblNombre;
@@ -116,9 +116,6 @@ public class Prueba extends JFrame implements ActionListener
     
 	}
 
-
-
-
 	@Override
 	public void actionPerformed(ActionEvent evento)
 	{
@@ -155,15 +152,26 @@ public class Prueba extends JFrame implements ActionListener
 			if(OPCION_3.equals(comando))
 			{
 				Mensaje mensaje =  new Mensaje();
+				mensaje.funcionUsuario(Funcion.SELECT_ID, ID, "", "", "");
 				
-				nodo = facade.consultarTodos(servicio.getCon(), mensaje);
-				
-				while(nodo != null)
+				try
 				{
-					System.out.println(nodo.getValor().toString());
-					nodo = nodo.getSiguiente();
+					nodo = facade.consultar(servicio.getCon(), mensaje);
+					String aviso = "";
+					
+					while(nodo != null)
+					{
+						aviso += nodo.getValor().toString() + "\n";
+						nodo = nodo.getSiguiente();
+					}
+					
+					JOptionPane.showMessageDialog(null, "La consulta por ID: " + aviso);
+					
 				}
-
+				catch (Exception e)
+				{
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
 			}
 		
 		
