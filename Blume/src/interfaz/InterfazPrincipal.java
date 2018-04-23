@@ -9,24 +9,27 @@ public class InterfazPrincipal extends JFrame {
 	
 	private PanelTitulo panelTitulo;
 	private PanelSeleccion panelSeleccion;
+	private PanelMostrar panelMostrar;
 	
 	private static final long serialVersionUID = 1L;
 	
 	public InterfazPrincipal()
 	{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(new Dimension(750, 1000));
-		setResizable(false);
+		setSize(new Dimension(650, 700));
+		setResizable(true);
 		setTitle("Blume");
 		
 		setLayout(new BorderLayout());
 		
 		panelTitulo = new PanelTitulo();
 		panelSeleccion = new PanelSeleccion(this);
+		panelMostrar =  new PanelMostrar();
 		
 		
 		add(panelTitulo,BorderLayout.NORTH);
 		add(panelSeleccion, BorderLayout.CENTER);
+		add(panelMostrar, BorderLayout.SOUTH);
 		
 	}
 	
