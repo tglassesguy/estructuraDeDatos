@@ -89,7 +89,7 @@ public class UsuariosDTO implements IDto, Serializable
 	@Override
 	public String consultarPorID() {
 		// TODO Auto-generated method stub
-		return "SELECT CODIGO, USERNAME, NOMBRE, PAIS FROM ARTICULOS WHERE ID_ARTICULO = "+id;
+		return "SELECT ID_USER, USERNAME, NOMBRE, PAIS FROM USUARIOS WHERE ID_USER = "+id;
 	}
 	
 	public String toString()
