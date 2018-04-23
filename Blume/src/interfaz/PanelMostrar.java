@@ -16,6 +16,14 @@ public class PanelMostrar extends JPanel {
 	
 	private JTextField txtMostrar;
 	
+	public JTextField getTxtMostrar() {
+		return txtMostrar;
+	}
+
+	public void setTxtMostrar(JTextField txtMostrar) {
+		this.txtMostrar = txtMostrar;
+	}
+
 	public PanelMostrar() {
 		// TODO Auto-generated constructor stub
 		

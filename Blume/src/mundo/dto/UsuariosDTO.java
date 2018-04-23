@@ -76,7 +76,7 @@ public class UsuariosDTO implements IDto, Serializable
 	@Override
 	public String actualizar() {
 		// TODO Auto-generated method stub
-		return "UPDATE USUARIOS a SET ID_USER = '+codigo+',USERNAME = '"+username.trim()+"',NOMBRE = '"+nombre.trim()+"',PAIS = '"+pais.trim()+"'WHERE ID_USER ="+id;
+		return "UPDATE USUARIOS SET  ID_USER = "+id+",USERNAME = '"+username.trim()+"', NOMBRE = '"+nombre.trim()+"', PAIS = '"+pais.trim()+"' WHERE ID_USER =" +id;
 
 	}
 

@@ -77,7 +77,9 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    private JTextField txtEjecucion;
 	    private JTextField txtRespuesta;
 	    
-	    private boolean ex = false;
+	    private Tabla tabla = null;
+	    private Funcion funcion = null;
+	    
 	    
 	    public PanelSeleccion(InterfazPrincipal ia)
 	    {
@@ -163,7 +165,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	
 	    	mitadBaja.add(btnUsuario);
 	    	mitadBaja.add(btnTabla);
-	    	
+
 	    	JPanel top = new JPanel();
 	    	top.setLayout(new GridLayout(2, 1));
 	    	
@@ -176,6 +178,8 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	add(top, BorderLayout.NORTH);
 	    	add(iz1 , BorderLayout.SOUTH);
 	    	add(mitadBaja , BorderLayout.CENTER);
+	    	
+	    	estadoInicial();
 	    }
 
 //	    public boolean si(ActionEvent evento)
@@ -196,28 +200,107 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			String comando = evento.getActionCommand( );
 			Usuario user= new Usuario();
 				
-				if(INSERTAR.equals(comando) )
+			if(INSERTAR.equals(comando) )
+			{
+				
+				btnActualizar.setEnabled(false);
+				btnEliminar.setEnabled(false);
+				btnConsultar.setEnabled(false);
+				
+				btnTabla.setEnabled(true);
+				btnUsuario.setEnabled(true);
+				
+				funcion  = Funcion.INSERT;
+		
+			}
+			if(ELIMINAR.equals(comando))
+			{
+				
+				btnActualizar.setEnabled(false);
+				btnInsertar.setEnabled(false);
+				btnConsultar.setEnabled(false);
+				
+				btnTabla.setEnabled(true);
+				btnUsuario.setEnabled(true);
+				
+				funcion  = Funcion.DELETE;
+		
+			}
+			if(ACTUALIZAR.equals(comando))
+			{
+				
+				btnEliminar.setEnabled(false);
+				btnInsertar.setEnabled(false);
+				btnConsultar.setEnabled(false);
+				
+				btnTabla.setEnabled(true);
+				btnUsuario.setEnabled(true);
+				
+				funcion  = Funcion.UPDATE;
+		
+			}
+			if(CONSULTAR.equals(comando))
+			{
+				
+				btnEliminar.setEnabled(false);
+				btnInsertar.setEnabled(false);
+				btnActualizar.setEnabled(false);
+				
+				btnTabla.setEnabled(true);
+				btnUsuario.setEnabled(true);
+				
+				int reply = JOptionPane.showConfirmDialog(null, "¿Desea consultar por ID?", "|Consulta en Blume|",  JOptionPane.YES_NO_OPTION);
+				if(reply == JOptionPane.YES_OPTION)
 				{
-//					if(ex == true)
-//					{}
-						try
-							{
-								Mensaje mensaje =  crearMensaje(Tabla.USUARIOS, Funcion.INSERT);
+					funcion = Funcion.SELECT_ID;
+				}
+				else
+				{
+					funcion = Funcion.SELECT;
+				}
+		
+			}
+			if(USUARIO.equals(comando))
+			{
+				tabla = Tabla.USUARIOS;
+				btnTabla.setEnabled(false);
+				activarFormulario();
+			}
+			if(ARCHIVOS.equals(comando))
+			{
+				tabla = Tabla.ARTICULOS;
+				btnUsuario.setEnabled(false);
+				activarFormulario();
+			}
 			
-								Nodo n = user.enviar(mensaje);
-								
-								JOptionPane.showMessageDialog(null, "Se insertó correctamente.");
-								
-							}
-							catch(Exception e)
-							{
-								JOptionPane.showMessageDialog(null, e.getMessage());
-							}
-					}
-					else
+			if(EJECUCION.equals(comando)) 
+			{
+				try {
+					Mensaje m = crearMensaje();
+					estadoInicial();
+					Nodo n = user.enviar(m);
+					
+					if(n != null)
 					{
-						JOptionPane.showMessageDialog(null, "Seleccione alguna puta tabla!");
+						String mensajeNodo = "";
+						
+						while(n != null)
+						{
+							mensajeNodo += n.getValor().toString() + "\n";
+							n = n.getSiguiente();
+						}
+						
+						//TODO - PONE mensajeNodo EN EL TXT CORRESPONDIENTE.
+						
 					}
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+			}
+			
+		
 				
 			
 //			if(OPCION_2.equals(comando))
@@ -247,15 +330,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 //					Mensaje mensaje =  crearMensaje(Tabla.USUARIOS, Funcion.SELECT_ID);
 //					Nodo n = user.enviar(mensaje);
 //					
-//					String aviso = "";
 //					
-//					while(n != null)
-//					{
-//						aviso += n.getValor().toString() + "\n";
-//						n = n.getSiguiente();
-//					}
-//					
-//					JOptionPane.showMessageDialog(null, "La consulta por ID: "+ "\n" + aviso);
 //					
 //				}
 //				catch (Exception e)
@@ -313,33 +388,99 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 		}
 			
 			
-		public Mensaje crearMensaje(Tabla pTabla , Funcion pFuncion) throws Exception
+		public Mensaje crearMensaje() throws Exception
 		{
-			Mensaje mensaje = new Mensaje();	
+			Mensaje mensaje = new Mensaje();
 			
-			if(pTabla.equals(Tabla.USUARIOS))
+			if(tabla.equals(Tabla.USUARIOS))
 			{
-				if(txtID.getText().equals(null)) // ;3
+				if(funcion.equals(Funcion.SELECT))
+				{
+					mensaje.funcionUsuario(funcion, 0, "", "", "");
+				}
+				else if(txtID.getText().equals(null)) // ;3
 				{
 					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
 				}
-				else {
+				else
+				{
 					int ID = Integer.parseInt(txtID.getText());
 					String nombre = txtNombre.getText();
 					String userName = txtUserName.getText();
 					String pais = txtPais.getText();
 					
-					mensaje.funcionUsuario(pFuncion, ID, userName, nombre, pais);
+					mensaje.funcionUsuario(funcion, ID, userName, nombre, pais);
 				}
+				
+			}
+			else
+			{
+				throw new Exception("Debe indicar una tabla para realizar la operación.");
 			}
 			
 			return mensaje;
 			
 		}
+		
+		public void estadoInicial() 
+		{
+			// Tablas
+			btnTabla.setEnabled(false);
+			btnUsuario.setEnabled(false);
+			
+			// Formulario.
+			txtID.setText("");
+			txtID.setEnabled(false);
+			txtNombre.setText("");
+			txtNombre.setEnabled(false);
+			txtPais.setText("");
+			txtPais.setEnabled(false);
+			txtUserName.setText("");
+			txtUserName.setEnabled(false);
+			
+			// Atributos.
+			funcion = null;
+			tabla = null;
+			
+			//Botones
+			btnInsertar.setEnabled(true);
+			btnActualizar.setEnabled(true);
+			btnEliminar.setEnabled(true);
+			btnConsultar.setEnabled(true);
+			
+		}
+		
+		public void activarFormulario()
+		{
+			if(tabla.equals(Tabla.USUARIOS))
+			{
+				if(funcion.equals(Funcion.DELETE) || funcion.equals(Funcion.SELECT_ID))
+				{
+					txtID.setEnabled(true);
+				}
+				else if(funcion.equals(Funcion.UPDATE) || funcion.equals(Funcion.INSERT))
+				{
+					txtID.setEnabled(true);
+					txtNombre.setEnabled(true);
+					txtPais.setEnabled(true);
+					txtUserName.setEnabled(true);
+					
+				}
+				else if(funcion.equals(Funcion.SELECT))
+				{
+					//Easter egg 98.
+					System.out.println("Se van a consultar todos los usuarios de la tabla seleccionada.");
+				}
+			}
+			
+		}
+		
 			
 	
 			
-		}
+}
+
+
 		
 		
 		//public Mensaje crearMensaje(Tabla pTabla , Funcion pFuncion,) throws Exception
