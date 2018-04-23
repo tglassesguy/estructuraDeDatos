@@ -18,15 +18,17 @@ public class Usuario {
 	
 	public final static int PUERTO = 9999;	
 
-	public static void main(String[] args) throws UnknownHostException, IOException, ClassNotFoundException {
-		// TODO Auto-generated method stub
+	public Usuario()
+	{
+		//easter egg 15.
+	}
+	
+	public Nodo enviar(Mensaje m) throws UnknownHostException, IOException, ClassNotFoundException {
 		
 		Socket socket = new Socket("localhost", PUERTO);
 		System.out.println("Cliente conectado.");
 		
 		ObjectOutputStream salida =  new ObjectOutputStream(socket.getOutputStream());
-		Mensaje m = new Mensaje();
-		m.funcionUsuario(Funcion.SELECT, 5, "Roblemiau", "Rock Lee", "Oman");
 		
 		System.out.println("Se va a enviar un mensaje.");
 
@@ -36,23 +38,7 @@ public class Usuario {
 
 		Nodo n = (Nodo) entrada.readObject();
 		
-		if(n == null)
-		{
-			JOptionPane.showMessageDialog(null, "Se ha realizado la operación.");
-		}
-		else
-		{
-			String aviso = "";
-			
-			while(n != null)
-			{
-				aviso += n.getValor().toString() + "\n";
-				n = n.getSiguiente();
-			}
-			
-			JOptionPane.showMessageDialog(null, aviso);
-		}
-	 
+		return n;
 	}
 
 }

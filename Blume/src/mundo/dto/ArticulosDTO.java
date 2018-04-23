@@ -1,11 +1,14 @@
 package mundo.dto;
 
+import java.io.Serializable;
 import java.util.Collection;
-
 import mundo.db.Conexion;
 
-public class ArticulosDTO implements IDto
+public class ArticulosDTO implements IDto, Serializable
 {
+	
+	private static final long serialVersionUID = -5399605122490343339L;
+
 	
 	private int id;
 	private String titulo;

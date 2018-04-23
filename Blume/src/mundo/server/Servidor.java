@@ -37,40 +37,52 @@ public class Servidor {
 		ser = new Servicio();
 		System.out.println("Esperando conexión...");
 
-		Socket socket = ss.accept(); //recibe conexión.
-		System.out.println("Se ha conectado un usuario.");
-		
-		ObjectInputStream entrada =  new ObjectInputStream(socket.getInputStream());
-		ObjectOutputStream salida = new ObjectOutputStream(socket.getOutputStream());
-		
-		Mensaje m = (Mensaje) entrada.readObject();
-		Nodo n = new Nodo();
-		
-		if(m.getFuncion().equals(Funcion.INSERT))
+		boolean iterar = true;
+		while(iterar == true)
 		{
-			facade.insertar(ser.getCon(), m);
-			n = null;
+			Socket socket = ss.accept(); //recibe conexión.
+			System.out.println("Se ha conectado un usuario.");
+			
+			ObjectInputStream entrada =  new ObjectInputStream(socket.getInputStream());
+			ObjectOutputStream salida = new ObjectOutputStream(socket.getOutputStream());
+			
+			Mensaje m = (Mensaje) entrada.readObject();
+			Nodo r = new Nodo();
+			
+			if(m.getFuncion().equals(Funcion.INSERT))
+			{
+				facade.insertar(ser.getCon(), m);
+				r = null;
+			}
+			else if(m.getFuncion().equals(Funcion.UPDATE))
+			{
+				facade.actualizar(ser.getCon(), m);
+				r = null;
+			}
+			else if(m.getFuncion().equals(Funcion.DELETE))
+			{
+				facade.eliminar(ser.getCon(), m);
+				r = null;
+			}
+			else if(m.getFuncion().equals(Funcion.SELECT))
+			{
+				r = facade.consultarTodos(ser.getCon(), m);
+			}
+			else if(m.getFuncion().equals(Funcion.SELECT_ID))
+			{
+				r = facade.consultar(ser.getCon(), m);
+			}
+			else if(m.getFuncion().equals(Funcion.CLOSE))
+			{
+				iterar = false;
+				r = null;
+			}
+			
+			salida.writeObject(r);
+			socket.close();
 		}
-		else if(m.getFuncion().equals(Funcion.UPDATE))
-		{
-			facade.actualizar(ser.getCon(), m);
-			n = null;
-		}
-		else if(m.getFuncion().equals(Funcion.DELETE))
-		{
-			facade.eliminar(ser.getCon(), m);
-			n = null;
-		}
-		else if(m.getFuncion().equals(Funcion.SELECT))
-		{
-			n = facade.consultarTodos(ser.getCon(), m);
-		}
-		else 
-		{
-			n = facade.consultar(ser.getCon(), m);
-		}
-		
-		salida.writeObject(n);
-		socket.close();
 	}
+	
+	
+
 }
