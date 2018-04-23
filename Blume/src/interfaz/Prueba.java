@@ -41,7 +41,7 @@ public class Prueba extends JFrame implements ActionListener
     /**
      * Botón Opción 1
      */
-   static JButton btnOpcion1;
+   private JButton btnOpcion1;
 
     /**
      * Botón Opción 2
@@ -91,7 +91,7 @@ public class Prueba extends JFrame implements ActionListener
         // Botón opción 2
         btnOpcion2 = new JButton( "Eliminar" );
         btnOpcion2.setActionCommand( OPCION_2 );
-        btnOpcion2.addActionListener( this );
+        btnOpcion2.addActionListener(this);
        
         btnOpcion3 = new JButton( "Consultar" );
         btnOpcion3.setActionCommand( OPCION_3);
