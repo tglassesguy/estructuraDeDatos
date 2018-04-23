@@ -57,6 +57,8 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    private JLabel lblPais;
 	    private JLabel lblVacio;
 	    private JLabel lblVacio2;
+	    private JLabel lblVacio3;
+	    private JLabel lblVacio4;
 	    
 	    private JLabel lblId_Articulo;
 	    private JLabel lblTitulo;
@@ -103,6 +105,8 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	
 	    	lblVacio = new JLabel(" ");
 	    	lblVacio2 = new JLabel(" ");
+	    	lblVacio3 = new JLabel(" ");
+	    	lblVacio4 = new JLabel(" ");
 	    	
 	    	lblAutor = new JLabel("Autor");
 			lblTitulo = new JLabel ("Titulo");
@@ -156,6 +160,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			formularios.add(der1);
 			formularios.add(lblVacio2);
 			
+			
 				    	
 	    	btnEjecutar = new JButton(new ImageIcon("Data/if_Inkcontober_Screech_Psyduck_2730368.png"));
 	    	btnEjecutar.setActionCommand(EJECUCION);  
@@ -194,19 +199,22 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	chkUsuario = new JCheckBox ("Usuarios", false);
 	    	
 	    	btnTabla = new JButton(new ImageIcon("Data/if_document_1055071.png"));
+	    	btnTabla.setSize(265, 85);
 	    	btnTabla.setActionCommand(ARCHIVOS);
 	    	btnTabla.addActionListener(this);
 	    	
 	    	btnUsuario = new JButton(new ImageIcon("Data/if_JD-06_2625478.png"));
+	    	btnUsuario.setSize(265, 85);
 	    	btnUsuario.setActionCommand(USUARIO);
 	    	btnUsuario.addActionListener(this);
 	    
 	    	
 	    	JPanel mitadBaja = new JPanel();
-	    	mitadBaja.setLayout(new GridLayout(1,2));
+	    	mitadBaja.setLayout(new GridLayout(2,2));
 	    	
 	    	mitadBaja.add(btnUsuario);
 	    	mitadBaja.add(btnTabla);
+	    	mitadBaja.add(lblVacio3);
 
 	    	JPanel top = new JPanel();
 	    	top.setLayout(new GridLayout(2, 1));
@@ -217,9 +225,21 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	JPanel ala = new JPanel();
 	    	ala.setLayout(new GridLayout(2, 1));
 	    	
+	    	ala.add(mitadBaja);
+	    	ala.add(formularios);
+	    	
+	    	txtRespuesta = new JTextField();
+	    	
+	    	JPanel fin = new JPanel();
+	    	fin.setLayout(new GridLayout(2, 1));
+	    	
+	    	fin.add(lblVacio4);
+	    	fin.add(txtRespuesta);
+	    	
 	    	add(top, BorderLayout.NORTH);
-	    	add(formularios , BorderLayout.SOUTH);
-	    	add(mitadBaja , BorderLayout.CENTER);
+	    	add(ala , BorderLayout.CENTER);
+	    	add(fin, BorderLayout.SOUTH);
+	    //	add(mitadBaja , BorderLayout.CENTER);
 	    	
 	    	estadoInicial();
 	    }
