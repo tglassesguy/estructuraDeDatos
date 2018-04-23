@@ -29,20 +29,12 @@ import mundo.test.Tabla;
 public class Prueba extends JFrame implements ActionListener
 {
 	
-	 /**
-     * Comando Opción 1
-     */
     private static final String OPCION_1 = "OPCION_1";
 
-    /**
-     * Comando Opción 2
-     */
     private static final String OPCION_2 = "OPCION_2";
-    
     
     private static final String OPCION_3 = "OPCION_3";
 
-   
     private static final String OPCION_4 = "OPCION_4";
 
     private static final String OPCION_5 = "OPCION_5";
@@ -70,8 +62,6 @@ public class Prueba extends JFrame implements ActionListener
      */
     private JButton btnOpcion4;
 
-    
-
     /**
      * Botón Opción 5
      */
@@ -85,6 +75,38 @@ public class Prueba extends JFrame implements ActionListener
     private JLabel lblVacio;
     
     private JTextField txtID;
+	public JTextField getTxtID() {
+		return txtID;
+	}
+
+	public void setTxtID(JTextField txtID) {
+		this.txtID = txtID;
+	}
+
+	public JTextField getTxtUserName() {
+		return txtUserName;
+	}
+
+	public void setTxtUserName(JTextField txtUserName) {
+		this.txtUserName = txtUserName;
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+
+	public JTextField getTxtPais() {
+		return txtPais;
+	}
+
+	public void setTxtPais(JTextField txtPais) {
+		this.txtPais = txtPais;
+	}
+
 	private JTextField txtUserName;
 	private JTextField txtNombre;
 	private JTextField txtPais;

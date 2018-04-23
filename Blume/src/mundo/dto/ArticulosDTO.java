@@ -29,8 +29,6 @@ public class ArticulosDTO implements IDto, Serializable
 		this.autor = pAutor;
 		this.fecha = pFecha;
 	}
-	
-	
 
 	public int getId() {
 		return id;

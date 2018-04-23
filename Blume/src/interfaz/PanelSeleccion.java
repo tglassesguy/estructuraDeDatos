@@ -1,6 +1,8 @@
 package interfaz;
 
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -124,16 +126,60 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	
 	    	add(top, BorderLayout.NORTH);
 	    	add(mitadBaja , BorderLayout.SOUTH);
-	    	
-	    		
 	    }
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			
+			String comando = e.getActionCommand();
+			
+			if(INSERTAR.equals(comando))
+			{
+				
+				Frame1 p = new Frame1();
+				String info = "";
+				p.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				p.setVisible(true);
+				p.addWindowListener(new WindowAdapter() {
+			        @Override
+			        public void windowClosing(WindowEvent event) {
+			            info += p.getTxtArea();
+			        }
+			    });
+				
+				
+				/*
+				frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+			    
+				
+			    public void exitProcedure() {
+			        frame.dispose();
+			        System.exit(0);
+			    }
+				
+			    */
+				
+				
+			}
+			
+			
+			
+	
+			
 		}
-
+		
+		
+		//public Mensaje crearMensaje(Tabla pTabla , Funcion pFuncion,) throws Exception
+		//{
+		//	Mensaje mensaje = new Mensaje();
+			
+			
+			
+			
+	//		return mensaje;
+			
+//		}
 
 	
 }
