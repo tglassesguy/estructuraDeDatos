@@ -56,12 +56,23 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    private JLabel lblNombre;
 	    private JLabel lblPais;
 	    private JLabel lblVacio;
-
+	    private JLabel lblVacio2;
+	    
+	    private JLabel lblId_Articulo;
+	    private JLabel lblTitulo;
+	    private JLabel lblAutor;
+	    private JLabel lblFecha_Pubicacion;
+	    
 	    private JTextField txtID;
 	    private JTextField txtUserName;
 		private JTextField txtNombre;
 		private JTextField txtPais;
-	    
+	   
+		private JTextField txtId_Articulo;;
+		private JTextField txtTitulo;
+		private JTextField txtAutor;
+		private JTextField txtFecha_Publicacion;
+		
 	    private Facade facade;
 	    
 	    private JButton btnEjecutar;
@@ -90,6 +101,31 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	txtEjecucion = new JTextField();
 	    	txtEjecucion.setEditable(true);
 	    	
+	    	lblVacio = new JLabel(" ");
+	    	lblVacio2 = new JLabel(" ");
+	    	
+	    	lblAutor = new JLabel("Autor");
+			lblTitulo = new JLabel ("Titulo");
+			lblId_Articulo = new JLabel ("ID articulo");
+			lblFecha_Pubicacion = new JLabel ("Fecha publicacion");
+			
+			txtAutor = new JTextField ();
+			txtTitulo = new JTextField ();
+			txtId_Articulo = new JTextField ();    
+			txtFecha_Publicacion = new JTextField ();    
+	    	
+	    	JPanel der1 = new JPanel();
+			der1.setLayout(new GridLayout(4, 2));
+			
+			der1.add(lblId_Articulo);
+			der1.add(txtId_Articulo);
+			der1.add(lblTitulo);
+			der1.add(txtTitulo);
+			der1.add(lblAutor);
+			der1.add(txtAutor);
+			der1.add(lblFecha_Pubicacion);
+			der1.add(txtFecha_Publicacion);
+	    	
 	    	lblNombre = new JLabel("Nombre");
 			lblUserName = new JLabel ("User Name");
 			lblId = new JLabel ("ID");
@@ -112,8 +148,14 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			iz1.add(lblPais);
 			iz1.add(txtPais);
 			
-			JPanel der1 = new JPanel();
-			der1.setLayout(new GridLayout(4, 1));
+			JPanel formularios = new JPanel();
+			formularios.setLayout(new GridLayout(1, 4));
+			
+			formularios.add(iz1);
+			formularios.add(lblVacio);
+			formularios.add(der1);
+			formularios.add(lblVacio2);
+			
 				    	
 	    	btnEjecutar = new JButton(new ImageIcon("Data/if_Inkcontober_Screech_Psyduck_2730368.png"));
 	    	btnEjecutar.setActionCommand(EJECUCION);  
@@ -176,7 +218,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	ala.setLayout(new GridLayout(2, 1));
 	    	
 	    	add(top, BorderLayout.NORTH);
-	    	add(iz1 , BorderLayout.SOUTH);
+	    	add(formularios , BorderLayout.SOUTH);
 	    	add(mitadBaja , BorderLayout.CENTER);
 	    	
 	    	estadoInicial();
