@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import java.awt.BorderLayout;
@@ -49,6 +51,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    private static final String ACTUALIZAR = "ACTUALIZAR";
 	    private static final String USUARIO = "USUARIO";
 	    private static final String ARCHIVOS = "ARCHIVOS";
+	    private static final String CANCELAR = "CANCELAR";
 	    	    
 	    
 	    private JLabel lblId;
@@ -59,6 +62,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    private JLabel lblVacio2;
 	    private JLabel lblVacio3;
 	    private JLabel lblVacio4;
+	    private JTextArea txaResultado;
 	    
 	    private JLabel lblId_Articulo;
 	    private JLabel lblTitulo;
@@ -78,17 +82,16 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    private Facade facade;
 	    
 	    private JButton btnEjecutar;
+	    private JButton btnCancelar;
+	    
 	    private JButton btnInsertar;
 	    private JButton btnEliminar;
 	    private JButton btnConsultar;
 	    private JButton btnActualizar;
-	    
-	    private JCheckBox chkUsuario;
+	   
 	    private JButton btnTabla;
 	    private JButton btnUsuario;
 	    
-	    private JTextField txtEjecucion;
-	    private JTextField txtRespuesta;
 	    
 	    private Tabla tabla = null;
 	    private Funcion funcion = null;
@@ -100,8 +103,8 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	setBorder(new TitledBorder(BorderFactory.createTitledBorder("Informacion")));
 	    	setLayout(new BorderLayout());
 	    	
-	    	txtEjecucion = new JTextField();
-	    	txtEjecucion.setEditable(true);
+	   // 	txtEjecucion = new JTextField();
+	   // 	txtEjecucion.setEditable(true);
 	    	
 	    	lblVacio = new JLabel(" ");
 	    	lblVacio2 = new JLabel(" ");
@@ -166,10 +169,14 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	btnEjecutar.setActionCommand(EJECUCION);  
 	    	btnEjecutar.addActionListener(this);
 	    	
+	    	btnCancelar = new JButton(new ImageIcon("Data/if_cancel_103431.png"));
+	    	btnCancelar.setActionCommand(CANCELAR);
+	    	btnCancelar.addActionListener(this);
+	    	
 	    	JPanel mitadSuperior = new JPanel();
 	    	mitadSuperior.setLayout(new GridLayout(1, 2));
 	    	
-	    	mitadSuperior.add(txtEjecucion);
+	    	mitadSuperior.add(btnCancelar);
 	    	mitadSuperior.add(btnEjecutar);
 	    	
 	    	btnInsertar = new JButton(new ImageIcon("Data/if_document_text_add_103511.png"));
@@ -196,7 +203,6 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	mitadMedia.add(btnActualizar);
 	    	mitadMedia.add(btnConsultar);
 	    	
-	    	chkUsuario = new JCheckBox ("Usuarios", false);
 	    	
 	    	btnTabla = new JButton(new ImageIcon("Data/if_document_1055071.png"));
 	    	btnTabla.setSize(265, 85);
@@ -214,31 +220,37 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	
 	    	mitadBaja.add(btnUsuario);
 	    	mitadBaja.add(btnTabla);
-	    	mitadBaja.add(lblVacio3);
+	    	mitadBaja.add(iz1);
+	    	mitadBaja.add(der1);
 
 	    	JPanel top = new JPanel();
-	    	top.setLayout(new GridLayout(2, 1));
+	    	top.setLayout(new GridLayout(1, 1));
 	    	
-	    	top.add(mitadSuperior);
+	    	//top.add(mitadSuperior);
 	    	top.add(mitadMedia);
+	    	
+	    	txaResultado = new JTextArea();
+	    	txaResultado.setEnabled(false);
+	    	
+	    	JScrollPane scroll = new JScrollPane(txaResultado);
 	    	
 	    	JPanel ala = new JPanel();
 	    	ala.setLayout(new GridLayout(2, 1));
 	    	
 	    	ala.add(mitadBaja);
-	    	ala.add(formularios);
+	    	ala.add(scroll , BorderLayout.CENTER);
 	    	
-	    	txtRespuesta = new JTextField();
+	    
 	    	
-	    	JPanel fin = new JPanel();
-	    	fin.setLayout(new GridLayout(2, 1));
-	    	
-	    	fin.add(lblVacio4);
-	    	fin.add(txtRespuesta);
+//	    	JPanel fin = new JPanel();
+//	    	fin.setLayout(new GridLayout(1, 1));
+//	    	
+//	    //	fin.add(lblVacio4);
+//	    	fin.add(txtRespuesta);
 	    	
 	    	add(top, BorderLayout.NORTH);
 	    	add(ala , BorderLayout.CENTER);
-	    	add(fin, BorderLayout.SOUTH);
+	    	add(mitadSuperior, BorderLayout.SOUTH);
 	    //	add(mitadBaja , BorderLayout.CENTER);
 	    	
 	    	estadoInicial();
@@ -352,7 +364,9 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 							n = n.getSiguiente();
 						}
 						
-						JOptionPane.showMessageDialog(null, mensajeNodo);
+						txaResultado.setText(mensajeNodo);
+						
+						//JOptionPane.showMessageDialog(null, mensajeNodo);
 						
 						//TODO - PONE mensajeNodo EN EL TXT CORRESPONDIENTE.
 						
