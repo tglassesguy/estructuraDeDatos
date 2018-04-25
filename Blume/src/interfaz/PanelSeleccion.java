@@ -165,11 +165,11 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			
 			
 				    	
-	    	btnEjecutar = new JButton(new ImageIcon("Data/if_Inkcontober_Screech_Psyduck_2730368.png"));
+	    	btnEjecutar = new JButton(new ImageIcon(getClass().getResource("/Data/if_Inkcontober_Screech_Psyduck_2730368.png")));
 	    	btnEjecutar.setActionCommand(EJECUCION);  
 	    	btnEjecutar.addActionListener(this);
 	    	
-	    	btnCancelar = new JButton(new ImageIcon("Data/if_cancel_103431.png"));
+	    	btnCancelar = new JButton(new ImageIcon(getClass().getResource("/Data/if_cancel_103431.png")));
 	    	btnCancelar.setActionCommand(CANCELAR);
 	    	btnCancelar.addActionListener(this);
 	    	
@@ -179,19 +179,19 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	mitadSuperior.add(btnCancelar);
 	    	mitadSuperior.add(btnEjecutar);
 	    	
-	    	btnInsertar = new JButton(new ImageIcon("Data/if_document_text_add_103511.png"));
+	    	btnInsertar = new JButton(new ImageIcon(getClass().getResource("/Data/if_document_text_add_103511.png")));
 	    	btnInsertar.setActionCommand(INSERTAR);
 	    	btnInsertar.addActionListener(this);
 	    	
-	    	btnEliminar = new JButton(new ImageIcon("Data/if_basket_1814090.png"));
+	    	btnEliminar = new JButton(new ImageIcon(getClass().getResource("/Data/if_basket_1814090.png")));
 	    	btnEliminar.setActionCommand(ELIMINAR);
 	    	btnEliminar.addActionListener(this);
 	    	
-	    	btnConsultar = new JButton(new ImageIcon("Data/if_337-Document_Search_2124221.png"));
+	    	btnConsultar = new JButton(new ImageIcon(getClass().getResource("/Data/if_337-Document_Search_2124221.png")));
 	    	btnConsultar.setActionCommand(CONSULTAR);
 	    	btnConsultar.addActionListener(this);
 	    	
-	    	btnActualizar = new JButton(new ImageIcon("Data/if_update_172618.png"));
+	    	btnActualizar = new JButton(new ImageIcon(getClass().getResource("/Data/if_update_172618.png")));
 	    	btnActualizar.setActionCommand(ACTUALIZAR);
 	    	btnActualizar.addActionListener(this);
 	    	
@@ -204,12 +204,12 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	mitadMedia.add(btnConsultar);
 	    	
 	    	
-	    	btnTabla = new JButton(new ImageIcon("Data/if_document_1055071.png"));
+	    	btnTabla = new JButton(new ImageIcon(getClass().getResource("/Data/if_document_1055071.png")));
 	    	btnTabla.setSize(265, 85);
 	    	btnTabla.setActionCommand(ARCHIVOS);
 	    	btnTabla.addActionListener(this);
 	    	
-	    	btnUsuario = new JButton(new ImageIcon("Data/if_JD-06_2625478.png"));
+	    	btnUsuario = new JButton(new ImageIcon(getClass().getResource("/Data/if_JD-06_2625478.png")));
 	    	btnUsuario.setSize(265, 85);
 	    	btnUsuario.setActionCommand(USUARIO);
 	    	btnUsuario.addActionListener(this);

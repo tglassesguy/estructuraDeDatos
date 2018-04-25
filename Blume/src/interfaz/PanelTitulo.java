@@ -13,7 +13,7 @@ public class PanelTitulo extends JPanel {
 private JLabel labelTitulo;
 	
 	public PanelTitulo() {
-		labelTitulo = new JLabel(new ImageIcon("Data/Banner Blume.png"));
+		labelTitulo = new JLabel(new ImageIcon(getClass().getResource("/Data/Banner Blume.png")));
 		setBorder(new TitledBorder(BorderFactory.createTitledBorder("Blume")));
 		add(labelTitulo);
 		}
