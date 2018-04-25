@@ -78,8 +78,8 @@ public class ArticulosDTO implements IDto, Serializable
 	@Override
 	public String actualizar() {
 		// TODO Auto-generated method stub
-		return "UPDATE ARTICULOS SET ID_ARTICULO = "+id+",TITULO = '"+titulo+"',AUTOR = "+autor+",FECHA_PUBLICACION = 'FECHA_PUBLICACION*'WHERE ID_ARTICULO = "+id;
-
+		return "UPDATE ARTICULOS SET ID_ARTICULO = "+id+",TITULO = '"+titulo.trim()+"',AUTOR = "+autor+",FECHA_PUBLICACION = '"+fecha.trim()+"' WHERE ID_ARTICULO = "+id;
+		
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class ArticulosDTO implements IDto, Serializable
 		// TODO Auto-generated method stub
 		return "SELECT * FROM ARTICULOS";
 	}
-
+	
 	@Override
 	public String consultarPorID() 
 	{
@@ -96,9 +96,9 @@ public class ArticulosDTO implements IDto, Serializable
 		return "SELECT ID, TITULO, AUTOR, FECHA FROM ARTICULOS WHERE ID_ARTICULO ="+id;
 	}
 	
-	public String toString()
+	public String toString()	
 	{ 
-		return id + titulo + autor + fecha;
+		return "[ "+ id + " | " + titulo + " | " + autor + " | " + fecha + " ]";
 	}
 
 }

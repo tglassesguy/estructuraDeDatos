@@ -1,7 +1,6 @@
 package mundo.dao;
 
 import java.sql.ResultSet;
-
 import mundo.db.Conexion;
 import mundo.dto.ArticulosDTO;
 import mundo.dto.UsuariosDTO;

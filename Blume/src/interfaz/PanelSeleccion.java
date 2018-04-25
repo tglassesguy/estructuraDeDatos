@@ -352,6 +352,8 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 							n = n.getSiguiente();
 						}
 						
+						JOptionPane.showMessageDialog(null, mensajeNodo);
+						
 						//TODO - PONE mensajeNodo EN EL TXT CORRESPONDIENTE.
 						
 					}
@@ -360,93 +362,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(null, e.getMessage());
 				}
-			}
-			
-		
-				
-			
-//			if(OPCION_2.equals(comando))
-//			{
-//				
-//				try
-//				{
-//					Mensaje mensaje = crearMensaje(Tabla.USUARIOS, Funcion.DELETE);
-//					
-//					Nodo n = user.enviar(mensaje);
-//					
-//					JOptionPane.showMessageDialog(null, "Se eliminó correctamente.");
-//					
-//				}
-//				catch(Exception e)
-//				{
-//					JOptionPane.showMessageDialog(null, e.getMessage());
-//				}
-//				
-//			}
-//			if(OPCION_3.equals(comando))
-//			{
-//				
-//				
-//				try
-//				{
-//					Mensaje mensaje =  crearMensaje(Tabla.USUARIOS, Funcion.SELECT_ID);
-//					Nodo n = user.enviar(mensaje);
-//					
-//					
-//					
-//				}
-//				catch (Exception e)
-//				{
-//					JOptionPane.showMessageDialog(null, e.getMessage());
-//				}
-//			}
-//			if(OPCION_4.equals(comando))
-//			{
-//				Mensaje mensaje = new Mensaje();
-//				mensaje.setTabla(Tabla.USUARIOS);
-//				mensaje.setFuncion(Funcion.SELECT);
-//				
-//				try
-//				{
-//					Nodo n = user.enviar(mensaje);
-//					
-//					String aviso = "";
-//					
-//					while(n != null)
-//					{
-//						aviso += n.getValor().toString() + "\n";
-//						n = n.getSiguiente();
-//					}
-//					
-//					JOptionPane.showMessageDialog(null,  aviso);
-//				}
-//				catch(Exception e)
-//				{
-//					
-//				}
-//				
-//			}
-//			if(OPCION_5.equals(comando))
-//			{
-//				Mensaje mensaje = new Mensaje();
-//				mensaje.setFuncion(Funcion.CLOSE);
-//				
-//				try 
-//				{
-//					Nodo n = user.enviar(mensaje);	
-//				}
-//				catch (Exception e)
-//				{
-//					JOptionPane.showMessageDialog(null, e.getMessage());
-//				}
-//				
-//				dispose();
-//				
-//			}
-//		
-//		
-//		
-//		
+			}		
 		}
 			
 			
@@ -475,6 +391,26 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				}
 				
 			}
+			else if(tabla.equals(Tabla.ARTICULOS))
+			{
+				if(funcion.equals(Funcion.SELECT))
+				{
+					mensaje.funcionArticulo(funcion, 0, "", 0, "");
+				}
+				else if(txtID.getText().equals(null)) // ;3
+				{
+					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
+				}
+				else
+				{
+					int id = Integer.parseInt(txtId_Articulo.getText());
+					String titulo = txtTitulo.getText();
+					int autor = Integer.parseInt(txtAutor.getText());
+					String fecha = txtFecha_Publicacion.getText();
+					
+					mensaje.funcionArticulo(funcion, id, titulo, autor, fecha);
+				}
+			}
 			else
 			{
 				throw new Exception("Debe indicar una tabla para realizar la operación.");
@@ -490,7 +426,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			btnTabla.setEnabled(false);
 			btnUsuario.setEnabled(false);
 			
-			// Formulario.
+			// Formulario usuarios.
 			txtID.setText("");
 			txtID.setEnabled(false);
 			txtNombre.setText("");
@@ -500,6 +436,16 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			txtUserName.setText("");
 			txtUserName.setEnabled(false);
 			
+			//Formulario articulos.
+			txtId_Articulo.setText("");
+			txtId_Articulo.setEnabled(false);
+			txtTitulo.setText("");
+			txtTitulo.setEnabled(false);
+			txtAutor.setText("");
+			txtAutor.setEnabled(false);
+			txtFecha_Publicacion.setText("");
+			txtFecha_Publicacion.setEnabled(false);
+
 			// Atributos.
 			funcion = null;
 			tabla = null;
@@ -531,30 +477,31 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				else if(funcion.equals(Funcion.SELECT))
 				{
 					//Easter egg 98.
-					System.out.println("Se van a consultar todos los usuarios de la tabla seleccionada.");
+					System.out.println("Se van a consultar todos los usuarios de la tabla.");
+				}
+			}
+	
+			else if(tabla.equals(Tabla.ARTICULOS))
+			{
+				if(funcion.equals(Funcion.DELETE) || funcion.equals(Funcion.SELECT_ID))
+				{
+					txtId_Articulo.setEnabled(true);
+				}
+				else if(funcion.equals(Funcion.UPDATE) || funcion.equals(Funcion.INSERT))
+				{
+					txtId_Articulo.setEnabled(true);
+					txtTitulo.setEnabled(true);
+					txtAutor.setEnabled(true);
+					txtFecha_Publicacion.setEnabled(true);
+					
+				}
+				else if(funcion.equals(Funcion.SELECT))
+				{
+					//Easter egg 99.
+					System.out.println("Se van a consultar todos los articulos de la tabla.");
 				}
 			}
 			
 		}
-		
-			
 	
-			
 }
-
-
-		
-		
-		//public Mensaje crearMensaje(Tabla pTabla , Funcion pFuncion,) throws Exception
-		//{
-		//	Mensaje mensaje = new Mensaje();
-			
-			
-			
-			
-	//		return mensaje;
-			
-//		}
-
-	
-

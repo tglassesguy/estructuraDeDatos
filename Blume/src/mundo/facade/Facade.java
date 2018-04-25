@@ -29,7 +29,8 @@ public class Facade implements IFacade {
 		{
 			articuloDao.insertar(con, sms);
 		}
-		else if (sms.getTabla().equals(Tabla.USUARIOS));
+		//else if (sms.getTabla().equals(Tabla.USUARIOS));
+		else
 		{
 			usuarioDao.insertar(con, sms);
 		}
@@ -43,7 +44,7 @@ public class Facade implements IFacade {
 		{
 			articuloDao.eliminar(con, sms);
 		}
-		else if (sms.getTabla().equals(Tabla.USUARIOS));
+		else
 		{
 			usuarioDao.eliminar(con, sms);
 		}
@@ -56,7 +57,7 @@ public class Facade implements IFacade {
 		{
 			articuloDao.actualizar(con, sms);
 		}
-		else if (sms.getTabla().equals(Tabla.USUARIOS));
+		else
 		{
 			usuarioDao.actualizar(con, sms);
 		}
@@ -73,7 +74,7 @@ public class Facade implements IFacade {
 		{
 			nodo = articuloDao.consultar(con, sms);
 		}
-		else if (sms.getTabla().equals(Tabla.USUARIOS));
+		else
 		{
 			nodo = usuarioDao.consultar(con, sms);
 		}
@@ -92,7 +93,7 @@ public class Facade implements IFacade {
 		{
 			nodo = articuloDao.consultarTodos(con, sms);	
 		}
-		else if(sms.getTabla().equals(Tabla.USUARIOS))
+		else
 		{
 			nodo = usuarioDao.consultarTodos(con, sms);
 		}

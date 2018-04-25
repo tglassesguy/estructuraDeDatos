@@ -1,7 +1,6 @@
 package mundo.dao;
 
-import javax.resource.cci.ResultSet;
-
+import java.sql.ResultSet;
 import mundo.db.Conexion;
 import mundo.dto.ArticulosDTO;
 import mundo.test.Contenedor;
@@ -16,7 +15,7 @@ public class ArticulosDAO implements IDao {
 		
 		int id = men.getIdArticulo(); 
 		String titulo = men.getTituloArticulo();
-		int autor = men.getIdArticulo();
+		int autor = men.getAutorArticulo();
 		String fecha = men.getFechaArticulo();
 		
 		ArticulosDTO temp = new ArticulosDTO(id, titulo, autor, fecha);
@@ -40,9 +39,9 @@ public class ArticulosDAO implements IDao {
 	public void actualizar(Conexion con, Mensaje men) {
 		// TODO Auto-generated method stub
 		
-		int id = men.getIdUsuario(); 
+		int id = men.getIdArticulo(); 
 		String titulo = men.getTituloArticulo();
-		int autor = men.getIdArticulo();
+		int autor = men.getAutorArticulo();
 		String fecha = men.getFechaArticulo();
 		
 		ArticulosDTO temp = new ArticulosDTO(id, titulo, autor, fecha);
@@ -58,7 +57,7 @@ public class ArticulosDAO implements IDao {
 		ArticulosDTO temp = new ArticulosDTO();
 		temp.setId(men.getIdArticulo());
 		
-		ResultSet rs = (ResultSet) con.ejecutaConsulta(temp.consultarPorID());
+		ResultSet rs = con.ejecutaConsulta(temp.consultarPorID());
 		
 		Nodo contenedor = new Contenedor<>().crear(rs, "mundo.dto.ArticulosDTO");
 		
@@ -72,7 +71,7 @@ public class ArticulosDAO implements IDao {
 		
 		ArticulosDTO temp = new ArticulosDTO();
 		
-		java.sql.ResultSet rs = con.ejecutaConsulta(temp.consultar());
+		ResultSet rs = con.ejecutaConsulta(temp.consultar());
 		
 		Nodo contenedor = new Contenedor<>().crear(rs, "mundo.dto.ArticulosDTO");
 		
