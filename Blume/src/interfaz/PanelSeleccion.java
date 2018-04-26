@@ -111,10 +111,10 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	lblVacio3 = new JLabel(" ");
 	    	lblVacio4 = new JLabel(" ");
 	    	
-	    	lblAutor = new JLabel("Autor");
-			lblTitulo = new JLabel ("Titulo");
-			lblId_Articulo = new JLabel ("ID articulo");
-			lblFecha_Pubicacion = new JLabel ("Fecha publicacion");
+	    	lblAutor = new JLabel("Autor:");
+			lblTitulo = new JLabel ("Titulo:");
+			lblId_Articulo = new JLabel ("ID - Articulo:");
+			lblFecha_Pubicacion = new JLabel ("Fecha publicacion:");
 			
 			txtAutor = new JTextField ();
 			txtTitulo = new JTextField ();
@@ -133,10 +133,10 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			der1.add(lblFecha_Pubicacion);
 			der1.add(txtFecha_Publicacion);
 	    	
-	    	lblNombre = new JLabel("Nombre");
-			lblUserName = new JLabel ("User Name");
-			lblId = new JLabel ("ID");
-			lblPais = new JLabel ("Pais");
+	    	lblNombre = new JLabel("Nombre:");
+			lblUserName = new JLabel ("Username:");
+			lblId = new JLabel ("ID - Usuario:");
+			lblPais = new JLabel ("País:");
 			
 			txtNombre = new JTextField ();
 			txtUserName = new JTextField ();
@@ -146,12 +146,12 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			JPanel iz1 = new JPanel();
 			iz1.setLayout(new GridLayout(4, 2));
 			
+			iz1.add(lblId);
+			iz1.add(txtID);
 			iz1.add(lblNombre);
 			iz1.add(txtNombre);
 			iz1.add(lblUserName);
 			iz1.add(txtUserName);
-			iz1.add(lblId);
-			iz1.add(txtID);
 			iz1.add(lblPais);
 			iz1.add(txtPais);
 			
@@ -163,8 +163,6 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			formularios.add(der1);
 			formularios.add(lblVacio2);
 			
-			
-				    	
 	    	btnEjecutar = new JButton(new ImageIcon(getClass().getResource("/Data/if_Inkcontober_Screech_Psyduck_2730368.png")));
 	    	btnEjecutar.setActionCommand(EJECUCION);  
 	    	btnEjecutar.addActionListener(this);
@@ -256,17 +254,6 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	estadoInicial();
 	    }
 
-//	    public boolean si(ActionEvent evento)
-//	    {
-//	    	String comando = evento.getActionCommand( );
-//			
-//	    	if(USUARIO.equals(comando))
-//			{
-//				ex = true;
-//				
-//			}
-//	    	return ex;
-//	    }
 		@Override
 		public void actionPerformed(ActionEvent evento)
 		{
@@ -377,6 +364,11 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 					JOptionPane.showMessageDialog(null, e.getMessage());
 				}
 			}		
+			
+			if(CANCELAR.equals(comando))
+			{
+				estadoInicial();
+			}
 		}
 			
 			
