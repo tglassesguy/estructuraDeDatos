@@ -1,4 +1,4 @@
-package mundo.server;
+package mundo.serverTest;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -16,7 +16,7 @@ import mundo.test.Nodo;
 
 public class Usuario {
 	
-	public final static int PUERTO = 8786;	
+	public final static int PUERTO = 9999;	
 
 	public Usuario()
 	{
