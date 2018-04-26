@@ -338,30 +338,37 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			{
 				try {
 					Mensaje m = crearMensaje();
-					estadoInicial();
-					Nodo n = user.enviar(m);
 					
-					if(n != null)
+					if(funcion.equals(Funcion.SELECT) || funcion.equals(Funcion.SELECT_ID))
 					{
-						String mensajeNodo = "";
 						
-						while(n != null)
+						Nodo n = user.enviar(m);
+						
+						if(n != null)
 						{
-							mensajeNodo += n.getValor().toString() + "\n";
-							n = n.getSiguiente();
+							String mensajeNodo = "";
+							
+							while(n != null)
+							{
+								mensajeNodo +=  n.getValor().toString() + "\n" ;
+								n = n.getSiguiente();
+							}
+							
+							txaResultado.setText(mensajeNodo);							
 						}
-						
-						txaResultado.setText(mensajeNodo);
-						
-						//JOptionPane.showMessageDialog(null, mensajeNodo);
-						
-						//TODO - PONE mensajeNodo EN EL TXT CORRESPONDIENTE.
-						
+					}
+					else
+					{
+						user.enviar(m);
+						JOptionPane.showMessageDialog(null, "Se ha realizado la operación " + funcion.toString().toLowerCase() + " correctamente.");
 					}
 					
-				} catch (Exception e) {
+					estadoInicial();
+					
+				} 
+				catch (Exception e) {
 					// TODO Auto-generated catch block
-					JOptionPane.showMessageDialog(null, e.getMessage());
+					JOptionPane.showMessageDialog(null, "Se ha producido un error: "+ "\n" + e.getMessage());
 				}
 			}		
 			
@@ -388,12 +395,12 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				}
 				else
 				{
-					int ID = Integer.parseInt(txtID.getText());
+					int id = Integer.parseInt(txtID.getText());
 					String nombre = txtNombre.getText();
 					String userName = txtUserName.getText();
 					String pais = txtPais.getText();
 					
-					mensaje.funcionUsuario(funcion, ID, userName, nombre, pais);
+					mensaje.funcionUsuario(funcion, id, userName, nombre, pais);
 				}
 				
 			}
@@ -403,7 +410,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				{
 					mensaje.funcionArticulo(funcion, 0, "", 0, "");
 				}
-				else if(txtID.getText().equals(null)) // ;3
+				else if(txtId_Articulo.getText().equals(null)) // ;3
 				{
 					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
 				}

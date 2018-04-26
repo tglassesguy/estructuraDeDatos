@@ -17,7 +17,6 @@ public class InterfazPrincipal extends JFrame {
 	public InterfazPrincipal()
 	{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	    setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		setSize(new Dimension(600, 600));
 		setResizable(false);
 		setTitle("Blume | DataBase Control System");
@@ -26,11 +25,11 @@ public class InterfazPrincipal extends JFrame {
 		
 		panelTitulo = new PanelTitulo();
 		panelSeleccion = new PanelSeleccion(this);
-		//panelMostrar =  new PanelMostrar();
+//		panelMostrar =  new PanelMostrar();
 		
 		add(panelTitulo,BorderLayout.NORTH);
 		add(panelSeleccion, BorderLayout.CENTER);
-	//	add(panelMostrar, BorderLayout.SOUTH);
+//		add(panelMostrar, BorderLayout.SOUTH);
 		
 	}
 	
