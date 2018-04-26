@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -102,10 +103,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	interfaz = ia;
 	    	setBorder(new TitledBorder(BorderFactory.createTitledBorder("Informacion")));
 	    	setLayout(new BorderLayout());
-	    	
-	   // 	txtEjecucion = new JTextField();
-	   // 	txtEjecucion.setEditable(true);
-	    	
+	    		    	
 	    	lblVacio = new JLabel(" ");
 	    	lblVacio2 = new JLabel(" ");
 	    	lblVacio3 = new JLabel(" ");
@@ -224,11 +222,11 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	JPanel top = new JPanel();
 	    	top.setLayout(new GridLayout(1, 1));
 	    	
-	    	//top.add(mitadSuperior);
 	    	top.add(mitadMedia);
 	    	
 	    	txaResultado = new JTextArea();
 	    	txaResultado.setEnabled(false);
+	    	txaResultado.setDisabledTextColor(Color.BLACK);
 	    	
 	    	JScrollPane scroll = new JScrollPane(txaResultado);
 	    	
@@ -237,19 +235,10 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	
 	    	ala.add(mitadBaja);
 	    	ala.add(scroll , BorderLayout.CENTER);
-	    	
-	    
-	    	
-//	    	JPanel fin = new JPanel();
-//	    	fin.setLayout(new GridLayout(1, 1));
-//	    	
-//	    //	fin.add(lblVacio4);
-//	    	fin.add(txtRespuesta);
-	    	
+	    	 	
 	    	add(top, BorderLayout.NORTH);
 	    	add(ala , BorderLayout.CENTER);
 	    	add(mitadSuperior, BorderLayout.SOUTH);
-	    //	add(mitadBaja , BorderLayout.CENTER);
 	    	
 	    	estadoInicial();
 	    }
