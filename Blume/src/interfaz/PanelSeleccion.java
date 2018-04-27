@@ -489,6 +489,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				if(funcion.equals(Funcion.DELETE) || funcion.equals(Funcion.SELECT_ID))
 				{
 					txtId_Articulo.setEnabled(true);
+					txtAutor.setEnabled(true);
 				}
 				else if(funcion.equals(Funcion.UPDATE) || funcion.equals(Funcion.INSERT))
 				{
