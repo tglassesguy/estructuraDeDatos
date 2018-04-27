@@ -194,7 +194,7 @@ public class Prueba extends JFrame implements ActionListener
 				{
 					Mensaje mensaje =  crearMensaje(Tabla.USUARIOS, Funcion.INSERT);
 
-					Nodo n = user.enviar(mensaje);
+					/Nodo n = user.enviar(mensaje);
 					
 					JOptionPane.showMessageDialog(null, "Se insertó correctamente.");
 					

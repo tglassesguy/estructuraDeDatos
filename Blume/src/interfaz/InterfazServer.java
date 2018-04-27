@@ -21,11 +21,11 @@ public class InterfazServer extends JFrame
 	
 	private JLabel ip;
 	private JTextField txtip;
-	private Server server;
+	private static Server server;
+	private static boolean centry = false;
 	
 	public InterfazServer() throws UnknownHostException
 	{
-		server = new Server();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(new Dimension(170, 100));
 		setResizable(false);
@@ -38,11 +38,20 @@ public class InterfazServer extends JFrame
 	  
 		add(ip);
 		add(txtip);
+		
+		centry = true;
 	}
 	
 	public static void main(String[] args) throws UnknownHostException 
 	{
-		InterfazServer server = new InterfazServer();
-		server.setVisible(true);
+		InterfazServer interServer = new InterfazServer();
+		interServer.setVisible(true);
+		
+		if(centry)
+		{
+			server = new Server();	
+		}
+		
+		
 	}
 }

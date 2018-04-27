@@ -28,7 +28,6 @@ public class Server {
 			{
 				System.out.println("Hola... esperando...");
 				Socket cliente = servidor.accept(); //Llega el papu.
-				JOptionPane.showMessageDialog(null,cliente.getInetAddress().getLocalHost().getHostAddress());
 				
 				ObjectInputStream entrada =  new ObjectInputStream(cliente.getInputStream());
 				ObjectOutputStream salida = new ObjectOutputStream(cliente.getOutputStream());
@@ -47,14 +46,16 @@ public class Server {
 	public Server()
 	{
 		servicio = new Servicio();
+		this.escuchar();
 	}
 	
+	/*
 	public static void main (String[] args)
 	{
-		Server ser = new Server();
+		//Server ser = new Server();
 		
-		ser.escuchar();
 	}
+	*/
 	
 	
 	
