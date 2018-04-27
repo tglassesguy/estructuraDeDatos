@@ -22,7 +22,7 @@ public class ClientePrueba {
 		Socket socket = new Socket("localhost", PUERTO);
 		System.out.println("Cliente conectado.");
 		Mensaje m = new Mensaje();
-		m.funcionUsuario(Funcion.INSERT, 666, "Miaut", "Camila", "Catalandia");
+//		m.funcionUsuario(Funcion.INSERT, 666, "Miaut", "Camila", "Catalandia");
 		
 		ObjectOutputStream salida =  new ObjectOutputStream(socket.getOutputStream());
 		

@@ -23,9 +23,9 @@ public class Usuario {
 		//easter egg 15.
 	}
 	
-	public Nodo enviar(Mensaje m) throws UnknownHostException, IOException, ClassNotFoundException {
+	public Nodo enviar(Mensaje m , String ip) throws UnknownHostException, IOException, ClassNotFoundException {
 		
-		Socket socket = new Socket("localhost", PUERTO);
+		Socket socket = new Socket(ip, PUERTO);
 		System.out.println("Cliente conectado.");
 		
 		ObjectOutputStream salida =  new ObjectOutputStream(socket.getOutputStream());
