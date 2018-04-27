@@ -16,7 +16,7 @@ import mundo.test.Nodo;
 
 public class Usuario {
 	
-	public final static int PUERTO = 9999;	
+	public final static int PUERTO = 8786;	
 
 	public Usuario()
 	{
@@ -25,8 +25,10 @@ public class Usuario {
 	
 	public Nodo enviar(Mensaje m) throws UnknownHostException, IOException, ClassNotFoundException {
 		
-		Socket socket = new Socket("localhost", PUERTO);
-		System.out.println("Cliente conectado.");
+		Socket socket = new Socket("162.168.0.11", PUERTO);
+		System.out.println("Cliente conectado." + socket.getInetAddress().toString() );
+        JOptionPane.showMessageDialog(null, socket.getLocalAddress());
+
 		
 		ObjectOutputStream salida =  new ObjectOutputStream(socket.getOutputStream());
 		

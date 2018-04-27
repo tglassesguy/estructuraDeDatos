@@ -5,6 +5,8 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import javax.swing.JOptionPane;
+
 import mundo.db.Conexion;
 import mundo.db.Servicio;
 
@@ -25,6 +27,7 @@ public class Server {
 			{
 				System.out.println("Hola... esperando...");
 				Socket cliente = servidor.accept(); //Llega el papu.
+				JOptionPane.showMessageDialog(null,cliente.getInetAddress().getLocalHost().getHostAddress());
 				
 				ObjectInputStream entrada =  new ObjectInputStream(cliente.getInputStream());
 				ObjectOutputStream salida = new ObjectOutputStream(cliente.getOutputStream());

@@ -14,7 +14,7 @@ import mundo.test.Nodo;
 
 public class ServidorHilo
 {
-	public final static int PUERTO = 9999;
+	public final static int PUERTO = 8786;
 	private ServerSocket ss = null;
 	private Facade facade = null;
 	private Servicio ser = null;
