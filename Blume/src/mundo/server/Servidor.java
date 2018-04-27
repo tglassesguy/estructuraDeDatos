@@ -25,8 +25,7 @@ public class Servidor {
 	
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
-		
-		new Servidor().iniciarServer(); //será necesario el new Server() ? 
+		new Servidor().iniciarServer(); //será necesario el new Server() ?
 	}
 	
 	public void iniciarServer() throws IOException, ClassNotFoundException
@@ -82,7 +81,4 @@ public class Servidor {
 			socket.close();
 		}
 	}
-	
-	
-
 }

@@ -96,9 +96,10 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    
 	    private Tabla tabla = null;
 	    private Funcion funcion = null;
+	    private String ip = "";
 	    
 	    
-	    public PanelSeleccion(InterfazPrincipal ia)
+	    public PanelSeleccion(InterfazPrincipal ia, String  ip)
 	    {
 	    	interfaz = ia;
 	    	setBorder(new TitledBorder(BorderFactory.createTitledBorder("Informacion")));
@@ -331,7 +332,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 					if(funcion.equals(Funcion.SELECT) || funcion.equals(Funcion.SELECT_ID))
 					{
 						
-						Nodo n = user.enviar(m);
+						Nodo n = user.enviar(m,ip);
 						
 						if(n != null)
 						{
@@ -348,7 +349,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 					}
 					else
 					{
-						user.enviar(m);
+						user.enviar(m , ip);
 						JOptionPane.showMessageDialog(null, "Se ha realizado la operación " + funcion.toString().toLowerCase() + " correctamente.");
 					}
 					

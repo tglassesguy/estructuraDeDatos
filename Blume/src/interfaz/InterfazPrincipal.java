@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class InterfazPrincipal extends JFrame {
 	
@@ -22,9 +23,10 @@ public class InterfazPrincipal extends JFrame {
 		setTitle("Blume | DataBase Control System");
 		
 		setLayout(new BorderLayout());
+		String ip = JOptionPane.showInputDialog("Ingrese la IP del servidor:");
 		
 		panelTitulo = new PanelTitulo();
-		panelSeleccion = new PanelSeleccion(this);
+		panelSeleccion = new PanelSeleccion(this,ip);
 //		panelMostrar =  new PanelMostrar();
 		
 		add(panelTitulo,BorderLayout.NORTH);

@@ -19,11 +19,9 @@ public class Contenedor <K> {
 		K data = null;
 		ResultSetMetaData metaDatos;
 		
-		
 		try {
 			
 			//Crear el objeto.
-			
 			data = (K) Class.forName(clase).newInstance();
 			Method metodos[] = Class.forName(clase).getMethods(); // shhhh ;3
 			metaDatos = rs.getMetaData();
@@ -45,7 +43,7 @@ public class Contenedor <K> {
 					
 					if(metodo != null) {
 						
-						asignarValor(data, metodo, rs.getObject(i) );
+						asignarValor(data, metodo, rs.getObject(i));
 					}
 					
 				}
@@ -109,7 +107,6 @@ public class Contenedor <K> {
 	public void asignarValor(K clase, Method metodo, Object info) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{
 		
-		//TODO- REVISAR METODO, POSIBLE ERROR.
 		 metodo.invoke(clase, info);	
 	}
 	
