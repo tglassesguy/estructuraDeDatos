@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.print.attribute.standard.DateTimeAtCompleted;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,6 +14,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
+
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -20,6 +24,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,6 +35,11 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 
+import java.security.Timestamp;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import mundo.db.Servicio;
 import mundo.facade.Facade;
 import mundo.server.Usuario;
@@ -36,7 +47,6 @@ import mundo.test.Funcion;
 import mundo.test.Mensaje;
 import mundo.test.Nodo;
 import mundo.test.Tabla;
-
 import mundo.facade.Facade;
 
 public class PanelSeleccion extends JPanel implements ActionListener {
@@ -78,7 +88,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 		private JTextField txtId_Articulo;;
 		private JTextField txtTitulo;
 		private JTextField txtAutor;
-		private JTextField txtFecha_Publicacion;
+		private JDateChooser txtFecha_Publicacion;
 		
 	    private Facade facade;
 	    
@@ -118,7 +128,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			txtAutor = new JTextField ();
 			txtTitulo = new JTextField ();
 			txtId_Articulo = new JTextField ();    
-			txtFecha_Publicacion = new JTextField ();    
+			txtFecha_Publicacion = new JDateChooser ();    
 	    	
 	    	JPanel der1 = new JPanel();
 			der1.setLayout(new GridLayout(4, 2));
@@ -396,6 +406,25 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			}
 			else if(tabla.equals(Tabla.ARTICULOS))
 			{
+				//////fecha del Sistema 
+				java.util.Date sistema = new Date();
+				String data = sistema.toString();
+				String[] f = data.split(" ");
+				int sdia = Integer.parseInt(f[2]);
+				int smes = sistema.getMonth() + 1;
+				int sano = Integer.parseInt(f[5]);
+				
+				////fecha del Calendario interfaz
+				String an = txtFecha_Publicacion.getDate().toString();
+				String[] a = an.split(" ");
+				String dia = a[2];
+				String mes = a[1];
+				String ano = a[5];
+				
+				//se hace el int del mes para compararlo con el del sistema
+				int mesp = txtFecha_Publicacion.getDate().getMonth() +1;
+				
+					
 				if(funcion.equals(Funcion.SELECT))
 				{
 					mensaje.funcionArticulo(funcion, 0, "", "", "");
@@ -404,13 +433,22 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				{
 					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
 				}
+				else if(Integer.parseInt(dia) > sdia  || mesp > smes || Integer.parseInt(ano) > sano)   
+				{
+					throw new Exception ("Debe ingresar una fecha que no sobre pase la de hoy.");
+					
+				}
 				else
 				{
+					
+					
 					int id = Integer.parseInt(txtId_Articulo.getText());
 					String titulo = txtTitulo.getText();
 					String autor = txtAutor.getText();
-					String fecha = txtFecha_Publicacion.getText();
 					
+					String fecha = dia + "/" + mes + "/" + ano;
+					
+							
 					mensaje.funcionArticulo(funcion, id, titulo, autor, fecha);
 				}
 			}
@@ -446,7 +484,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			txtTitulo.setEnabled(false);
 			txtAutor.setText("");
 			txtAutor.setEnabled(false);
-			txtFecha_Publicacion.setText("");
+			
 			txtFecha_Publicacion.setEnabled(false);
 
 			// Atributos.

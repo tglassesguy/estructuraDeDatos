@@ -18,8 +18,8 @@ public class InterfazPrincipal extends JFrame {
 	public InterfazPrincipal()
 	{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(new Dimension(600, 600));
-		setResizable(false);
+		setSize(new Dimension(650, 600));
+		setResizable(true);
 		setTitle("Blume | DataBase Control System");
 		
 		setLayout(new BorderLayout());
