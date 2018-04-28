@@ -15,7 +15,7 @@ public class ArticulosDAO implements IDao {
 		
 		int id = men.getIdArticulo(); 
 		String titulo = men.getTituloArticulo();
-		int autor = men.getAutorArticulo();
+		String autor = men.getAutorArticulo();
 		String fecha = men.getFechaArticulo();
 		
 		ArticulosDTO temp = new ArticulosDTO(id, titulo, autor, fecha);
@@ -41,7 +41,7 @@ public class ArticulosDAO implements IDao {
 		
 		int id = men.getIdArticulo(); 
 		String titulo = men.getTituloArticulo();
-		int autor = men.getAutorArticulo();
+		String autor = men.getAutorArticulo();
 		String fecha = men.getFechaArticulo();
 		
 		ArticulosDTO temp = new ArticulosDTO(id, titulo, autor, fecha);

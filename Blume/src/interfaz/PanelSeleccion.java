@@ -398,7 +398,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			{
 				if(funcion.equals(Funcion.SELECT))
 				{
-					mensaje.funcionArticulo(funcion, 0, "", 0, "");
+					mensaje.funcionArticulo(funcion, 0, "", "", "");
 				}
 				else if(txtId_Articulo.getText().equals(null)) // ;3
 				{
@@ -408,7 +408,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				{
 					int id = Integer.parseInt(txtId_Articulo.getText());
 					String titulo = txtTitulo.getText();
-					int autor = Integer.parseInt(txtAutor.getText());
+					String autor = txtAutor.getText();
 					String fecha = txtFecha_Publicacion.getText();
 					
 					mensaje.funcionArticulo(funcion, id, titulo, autor, fecha);
@@ -489,7 +489,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				if(funcion.equals(Funcion.DELETE) || funcion.equals(Funcion.SELECT_ID))
 				{
 					txtId_Articulo.setEnabled(true);
-					txtAutor.setEnabled(true);
+					
 				}
 				else if(funcion.equals(Funcion.UPDATE) || funcion.equals(Funcion.INSERT))
 				{

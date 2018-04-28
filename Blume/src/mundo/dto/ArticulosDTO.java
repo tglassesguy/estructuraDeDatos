@@ -12,7 +12,7 @@ public class ArticulosDTO implements IDto, Serializable
 	
 	private int id;
 	private String titulo;
-	private int autor;
+	private String autor;
 	private String fecha;
 	
 	public ArticulosDTO()
@@ -20,7 +20,7 @@ public class ArticulosDTO implements IDto, Serializable
 		
 	}
 	
-	public ArticulosDTO (int pID, String pTitulo, int pAutor, String pFecha)
+	public ArticulosDTO (int pID, String pTitulo, String pAutor, String pFecha)
 	{
 		super();
 		
@@ -46,11 +46,11 @@ public class ArticulosDTO implements IDto, Serializable
 		this.titulo = titulo;
 	}
 
-	public int getAutor() {
+	public String getAutor() {
 		return autor;
 	}
 
-	public void setAutor(int autor) {
+	public void setAutor(String autor) {
 		this.autor = autor;
 	}
 
@@ -65,7 +65,7 @@ public class ArticulosDTO implements IDto, Serializable
 	@Override
 	public String insertar() {
 		// TODO Auto-generated method stub
-		return "INSERT INTO ARTICULOS (ID_ARTICULO, TITULO, AUTOR, FECHA_PUBLICACION)VALUES ("+id+",'"+titulo.trim()+"',"+autor+",'"+fecha.trim()+"')";
+		return "INSERT INTO ARTICULOS (ID_ARTICULO, TITULO, AUTOR, FECHA_PUBLICACION)VALUES ("+id+",'"+titulo.trim()+"','"+autor.trim()+"','"+fecha.trim()+"')";
 
 	}
 
@@ -78,7 +78,7 @@ public class ArticulosDTO implements IDto, Serializable
 	@Override
 	public String actualizar() {
 		// TODO Auto-generated method stub
-		return "UPDATE ARTICULOS SET ID_ARTICULO = "+id+",TITULO = '"+titulo.trim()+"',AUTOR = "+autor+",FECHA_PUBLICACION = '"+fecha.trim()+"' WHERE ID_ARTICULO = "+id;
+		return "UPDATE ARTICULOS SET ID_ARTICULO = "+id+",TITULO = '"+titulo.trim()+"',AUTOR = '"+autor.trim()+"',FECHA_PUBLICACION = '"+fecha.trim()+"' WHERE ID_ARTICULO = "+id;
 		
 	}
 

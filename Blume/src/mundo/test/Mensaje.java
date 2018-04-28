@@ -12,7 +12,7 @@ public class Mensaje implements Serializable {
 	
 	int idArticulo;
 	String tituloArticulo;
-	int autorArticulo;
+	String autorArticulo;
 	String fechaArticulo;
 	
 	int idUsuario;
@@ -36,7 +36,7 @@ public class Mensaje implements Serializable {
 		
 	}
 
-	public void funcionArticulo(Funcion pFuncion, int pId, String pTitulo, int pAutor, String pFecha )
+	public void funcionArticulo(Funcion pFuncion, int pId, String pTitulo, String pAutor, String pFecha )
 	{
 		tabla = Tabla.ARTICULOS;
 		funcion = pFuncion;
@@ -79,11 +79,11 @@ public class Mensaje implements Serializable {
 		this.tituloArticulo = tituloArticulo;
 	}
 
-	public int getAutorArticulo() {
+	public String getAutorArticulo() {
 		return autorArticulo;
 	}
 
-	public void setAutorArticulo(int autorArticulo) {
+	public void setAutorArticulo(String autorArticulo) {
 		this.autorArticulo = autorArticulo;
 	}
 
