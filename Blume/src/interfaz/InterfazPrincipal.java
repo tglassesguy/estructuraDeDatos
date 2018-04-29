@@ -24,6 +24,10 @@ public class InterfazPrincipal extends JFrame {
 		
 		setLayout(new BorderLayout());
 		String ip = JOptionPane.showInputDialog("Ingrese la IP del servidor:");
+		if(ip.trim().equals(null) | ip.trim().equals(""))
+		{
+			this.dispose();
+		}
 		
 		panelTitulo = new PanelTitulo();
 		panelSeleccion = new PanelSeleccion(this,ip);
