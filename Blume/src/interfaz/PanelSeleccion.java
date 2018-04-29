@@ -399,7 +399,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				{
 					mensaje.funcionUsuario(funcion, 0, "", "", "");
 				}
-				else if(txtID.getText().equals(null)) // ;3
+				else if(txtID.getText().equals(null) || txtID.getText().equals("")) // ;3
 				{
 					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
 				}
