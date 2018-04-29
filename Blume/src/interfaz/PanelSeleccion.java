@@ -403,14 +403,29 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				{
 					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
 				}
+				else if( funcion.equals(Funcion.INSERT) || funcion.equals(funcion.UPDATE))
+				{
+					if(txtNombre.getText().trim().equals("") || txtUserName.getText().trim().equals("") || txtPais.getText().trim().equals(""))
+					{
+						throw new Exception ("Una de las casillas de registro está en blanco.");
+					}
+				}
 				else
 				{
-					int id = Integer.parseInt(txtID.getText());
-					String nombre = txtNombre.getText();
-					String userName = txtUserName.getText();
-					String pais = txtPais.getText();
+					try
+					{
+						int id = Integer.parseInt(txtID.getText().trim());
+						String nombre = txtNombre.getText().trim();
+						String userName = txtUserName.getText().trim();
+						String pais = txtPais.getText().trim();
+						
+						mensaje.funcionUsuario(funcion, id, userName, nombre, pais);
+					}
+					catch (Exception e)
+					{
+						throw new Exception ("Debe ingresar un número como ID.");
+					}
 					
-					mensaje.funcionUsuario(funcion, id, userName, nombre, pais);
 				}
 				
 			}
