@@ -27,17 +27,19 @@ public class InterfazServer extends JFrame
 	public InterfazServer() throws UnknownHostException
 	{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(new Dimension(170, 100));
+		setSize(new Dimension(300, 100));
 		setResizable(false);
 		
 		setLayout(new BorderLayout());
 		ip = new JLabel("IP");
+		String[] partes = InetAddress.getLocalHost().toString().split("/");
+		ip.setText("                                   "+partes[1]);
 	  
-		txtip = new JTextField();
-		txtip.setText(InetAddress.getLocalHost().toString());
+		/*txtip = new JTextField();
+		txtip.setText();*/
 	  
 		add(ip);
-		add(txtip);
+		/*add(txtip);*/
 		
 		centry = true;
 	}
