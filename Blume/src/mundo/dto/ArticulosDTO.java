@@ -93,7 +93,7 @@ public class ArticulosDTO implements IDto, Serializable
 	public String consultarPorID() 
 	{
 		// TODO Auto-generated method stub
-		return "SELECT ID, TITULO, AUTOR, FECHA FROM ARTICULOS WHERE ID_ARTICULO ="+id;
+		return "SELECT ID_ARTICULO, TITULO, AUTOR, FECHA_PUBLICACION FROM ARTICULOS WHERE ID_ARTICULO ="+id;
 	}
 	
 	public String toString()	
