@@ -416,34 +416,33 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				{
 					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
 				}
-				
 				else
 				{
+					if(funcion.equals(Funcion.INSERT) || funcion.equals(Funcion.UPDATE))
+					{
 					//////fecha del Sistema 
-					java.util.Date sistema = new Date();
-					String data = sistema.toString();
-					String[] f = data.split(" ");
-					int sdia = Integer.parseInt(f[2]);
-					int smes = sistema.getMonth() + 1;
-					int sano = Integer.parseInt(f[5]);
-					
-					////fecha del Calendario interfaz
-					String an = txtFecha_Publicacion.getDate().toString();
-					String[] a = an.split(" ");
-					String dia = a[2];
-					String mes = a[1];
-					String ano = a[5];
-					
-					//se hace el int del mes para compararlo con el del sistema
-					int mesp = txtFecha_Publicacion.getDate().getMonth() +1;
-					
-					if(Integer.parseInt(dia) > sdia  || mesp > smes || Integer.parseInt(ano) > sano)   
-					{
-						throw new Exception ("Debe ingresar una fecha que no sobre pase la de hoy.");
+						java.util.Date sistema = new Date();
+						String data = sistema.toString();
+						String[] f = data.split(" ");
+						int sdia = Integer.parseInt(f[2]);
+						int smes = sistema.getMonth() + 1;
+						int sano = Integer.parseInt(f[5]);
 						
-					}
-					else
-					{
+						////fecha del Calendario interfaz
+						String an = txtFecha_Publicacion.getDate().toString();
+						String[] a = an.split(" ");
+						String dia = a[2];
+						String mes = a[1];
+						String ano = a[5];
+						
+						//se hace el int del mes para compararlo con el del sistema
+						int mesp = txtFecha_Publicacion.getDate().getMonth() +1;
+						
+						if(Integer.parseInt(dia) > sdia  || mesp > smes || Integer.parseInt(ano) > sano)   
+						{
+							throw new Exception ("Debe ingresar una fecha que no sobre pase la de hoy.");
+						}
+						
 						int id = Integer.parseInt(txtId_Articulo.getText());
 						String titulo = txtTitulo.getText();
 						String autor = txtAutor.getText();
@@ -451,6 +450,12 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 						String fecha = dia + "/" + mes + "/" + ano;
 						
 						mensaje.funcionArticulo(funcion, id, titulo, autor, fecha);
+
+					}
+					else
+					{
+						int id = Integer.parseInt(txtId_Articulo.getText());
+						mensaje.funcionArticulo(funcion, id, "", "", "");
 
 					}
 							
