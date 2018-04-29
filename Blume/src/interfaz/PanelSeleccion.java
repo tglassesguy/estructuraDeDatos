@@ -175,10 +175,13 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	btnEjecutar = new JButton(new ImageIcon(getClass().getResource("/Data/if_Inkcontober_Screech_Psyduck_2730368.png")));
 	    	btnEjecutar.setActionCommand(EJECUCION);  
 	    	btnEjecutar.addActionListener(this);
+	    	btnEjecutar.setToolTipText("Ejecuta la operación hacia la base de datos.");
+	    	
 	    	
 	    	btnCancelar = new JButton(new ImageIcon(getClass().getResource("/Data/if_cancel_103431.png")));
 	    	btnCancelar.setActionCommand(CANCELAR);
 	    	btnCancelar.addActionListener(this);
+	    	btnCancelar.setToolTipText("Cancela la operación.");
 	    	
 	    	JPanel mitadSuperior = new JPanel();
 	    	mitadSuperior.setLayout(new GridLayout(1, 2));
@@ -189,18 +192,22 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	btnInsertar = new JButton(new ImageIcon(getClass().getResource("/Data/if_document_text_add_103511.png")));
 	    	btnInsertar.setActionCommand(INSERTAR);
 	    	btnInsertar.addActionListener(this);
+	    	btnInsertar.setToolTipText("Inserta un registro en la base de datos.");
 	    	
 	    	btnEliminar = new JButton(new ImageIcon(getClass().getResource("/Data/if_basket_1814090.png")));
 	    	btnEliminar.setActionCommand(ELIMINAR);
 	    	btnEliminar.addActionListener(this);
+	    	btnEliminar.setToolTipText("Elimina un registro en la base de datos.");
 	    	
 	    	btnConsultar = new JButton(new ImageIcon(getClass().getResource("/Data/if_337-Document_Search_2124221.png")));
 	    	btnConsultar.setActionCommand(CONSULTAR);
 	    	btnConsultar.addActionListener(this);
+	    	btnConsultar.setToolTipText("Consulta uno o varios registros en la base de datos.");
 	    	
 	    	btnActualizar = new JButton(new ImageIcon(getClass().getResource("/Data/if_update_172618.png")));
 	    	btnActualizar.setActionCommand(ACTUALIZAR);
 	    	btnActualizar.addActionListener(this);
+	    	btnActualizar.setToolTipText("Actualiza un registro en la base de datos.");
 	    	
 	    	JPanel mitadMedia = new JPanel();
 	    	mitadMedia.setLayout(new GridLayout(1, 4));
@@ -215,11 +222,13 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	btnTabla.setSize(265, 85);
 	    	btnTabla.setActionCommand(ARCHIVOS);
 	    	btnTabla.addActionListener(this);
+	    	btnTabla.setToolTipText("Seleccionar la tabla de ARTICULOS.");
 	    	
 	    	btnUsuario = new JButton(new ImageIcon(getClass().getResource("/Data/if_JD-06_2625478.png")));
 	    	btnUsuario.setSize(265, 85);
 	    	btnUsuario.setActionCommand(USUARIO);
 	    	btnUsuario.addActionListener(this);
+	    	btnUsuario.setToolTipText("Seleccionar la tabla de USUARIOS.");
 	    
 	    	
 	    	JPanel mitadBaja = new JPanel();
