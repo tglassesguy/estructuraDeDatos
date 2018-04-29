@@ -12,6 +12,7 @@ public class InterfazPrincipal extends JFrame {
 	private PanelTitulo panelTitulo;
 	private PanelSeleccion panelSeleccion;
 	//private PanelMostrar panelMostrar;
+	private static boolean aviso = false; 
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -26,7 +27,7 @@ public class InterfazPrincipal extends JFrame {
 		String ip = JOptionPane.showInputDialog("Ingrese la IP del servidor:");
 		if(ip.trim().equals(null) | ip.trim().equals(""))
 		{
-			this.dispose();
+			aviso = true;
 		}
 		
 		panelTitulo = new PanelTitulo();
@@ -41,7 +42,15 @@ public class InterfazPrincipal extends JFrame {
 	
 	public static void main(String[] args) {
 		InterfazPrincipal ia = new InterfazPrincipal();
-		ia.setVisible(true);
+		if(!aviso)
+		{
+			ia.setVisible(true);
+		}
+		else
+		{
+			ia.dispose();
+		}
+		
 	}
 
 }
