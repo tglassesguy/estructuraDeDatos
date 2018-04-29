@@ -321,6 +321,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				}
 		
 			}
+			
 			if(USUARIO.equals(comando))
 			{
 				tabla = Tabla.USUARIOS;
@@ -405,25 +406,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				
 			}
 			else if(tabla.equals(Tabla.ARTICULOS))
-			{
-				//////fecha del Sistema 
-				java.util.Date sistema = new Date();
-				String data = sistema.toString();
-				String[] f = data.split(" ");
-				int sdia = Integer.parseInt(f[2]);
-				int smes = sistema.getMonth() + 1;
-				int sano = Integer.parseInt(f[5]);
-				
-				////fecha del Calendario interfaz
-				String an = txtFecha_Publicacion.getDate().toString();
-				String[] a = an.split(" ");
-				String dia = a[2];
-				String mes = a[1];
-				String ano = a[5];
-				
-				//se hace el int del mes para compararlo con el del sistema
-				int mesp = txtFecha_Publicacion.getDate().getMonth() +1;
-				
+			{		
 					
 				if(funcion.equals(Funcion.SELECT))
 				{
@@ -433,23 +416,44 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				{
 					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
 				}
-				else if(Integer.parseInt(dia) > sdia  || mesp > smes || Integer.parseInt(ano) > sano)   
-				{
-					throw new Exception ("Debe ingresar una fecha que no sobre pase la de hoy.");
-					
-				}
+				
 				else
 				{
+					//////fecha del Sistema 
+					java.util.Date sistema = new Date();
+					String data = sistema.toString();
+					String[] f = data.split(" ");
+					int sdia = Integer.parseInt(f[2]);
+					int smes = sistema.getMonth() + 1;
+					int sano = Integer.parseInt(f[5]);
 					
+					////fecha del Calendario interfaz
+					String an = txtFecha_Publicacion.getDate().toString();
+					String[] a = an.split(" ");
+					String dia = a[2];
+					String mes = a[1];
+					String ano = a[5];
 					
-					int id = Integer.parseInt(txtId_Articulo.getText());
-					String titulo = txtTitulo.getText();
-					String autor = txtAutor.getText();
+					//se hace el int del mes para compararlo con el del sistema
+					int mesp = txtFecha_Publicacion.getDate().getMonth() +1;
 					
-					String fecha = dia + "/" + mes + "/" + ano;
-					
+					if(Integer.parseInt(dia) > sdia  || mesp > smes || Integer.parseInt(ano) > sano)   
+					{
+						throw new Exception ("Debe ingresar una fecha que no sobre pase la de hoy.");
+						
+					}
+					else
+					{
+						int id = Integer.parseInt(txtId_Articulo.getText());
+						String titulo = txtTitulo.getText();
+						String autor = txtAutor.getText();
+						
+						String fecha = dia + "/" + mes + "/" + ano;
+						
+						mensaje.funcionArticulo(funcion, id, titulo, autor, fecha);
+
+					}
 							
-					mensaje.funcionArticulo(funcion, id, titulo, autor, fecha);
 				}
 			}
 			else
