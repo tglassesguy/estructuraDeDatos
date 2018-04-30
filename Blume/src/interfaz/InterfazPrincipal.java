@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -11,7 +12,6 @@ public class InterfazPrincipal extends JFrame {
 	
 	private PanelTitulo panelTitulo;
 	private PanelSeleccion panelSeleccion;
-	//private PanelMostrar panelMostrar;
 	private static boolean aviso = false; 
 	
 	private static final long serialVersionUID = 1L;
@@ -22,6 +22,7 @@ public class InterfazPrincipal extends JFrame {
 		setSize(new Dimension(650, 600));
 		setResizable(true);
 		setTitle("Blume | DataBase Control System");
+		setIconImage(new ImageIcon(getClass().getResource("/Data/database.png")).getImage());
 		
 		setLayout(new BorderLayout());
 		String ip = JOptionPane.showInputDialog("Ingrese la IP del servidor:");
@@ -32,11 +33,9 @@ public class InterfazPrincipal extends JFrame {
 		
 		panelTitulo = new PanelTitulo();
 		panelSeleccion = new PanelSeleccion(this,ip);
-//		panelMostrar =  new PanelMostrar();
 		
 		add(panelTitulo,BorderLayout.NORTH);
 		add(panelSeleccion, BorderLayout.CENTER);
-//		add(panelMostrar, BorderLayout.SOUTH);
 		
 	}
 	

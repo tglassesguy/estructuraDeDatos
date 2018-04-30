@@ -172,13 +172,13 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			formularios.add(der1);
 			formularios.add(lblVacio2);
 			
-	    	btnEjecutar = new JButton(new ImageIcon(getClass().getResource("/Data/if_Inkcontober_Screech_Psyduck_2730368.png")));
+	    	btnEjecutar = new JButton(new ImageIcon(getClass().getResource("/Data/check.png")));
 	    	btnEjecutar.setActionCommand(EJECUCION);  
 	    	btnEjecutar.addActionListener(this);
 	    	btnEjecutar.setToolTipText("Ejecuta la operación hacia la base de datos.");
 	    	
 	    	
-	    	btnCancelar = new JButton(new ImageIcon(getClass().getResource("/Data/if_cancel_103431.png")));
+	    	btnCancelar = new JButton(new ImageIcon(getClass().getResource("/Data/cancel.png")));
 	    	btnCancelar.setActionCommand(CANCELAR);
 	    	btnCancelar.addActionListener(this);
 	    	btnCancelar.setToolTipText("Cancela la operación.");
@@ -189,22 +189,22 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	mitadSuperior.add(btnCancelar);
 	    	mitadSuperior.add(btnEjecutar);
 	    	
-	    	btnInsertar = new JButton(new ImageIcon(getClass().getResource("/Data/if_document_text_add_103511.png")));
+	    	btnInsertar = new JButton(new ImageIcon(getClass().getResource("/Data/insert.png")));
 	    	btnInsertar.setActionCommand(INSERTAR);
 	    	btnInsertar.addActionListener(this);
 	    	btnInsertar.setToolTipText("Inserta un registro en la base de datos.");
 	    	
-	    	btnEliminar = new JButton(new ImageIcon(getClass().getResource("/Data/if_basket_1814090.png")));
+	    	btnEliminar = new JButton(new ImageIcon(getClass().getResource("/Data/delete.png")));
 	    	btnEliminar.setActionCommand(ELIMINAR);
 	    	btnEliminar.addActionListener(this);
 	    	btnEliminar.setToolTipText("Elimina un registro en la base de datos.");
 	    	
-	    	btnConsultar = new JButton(new ImageIcon(getClass().getResource("/Data/if_337-Document_Search_2124221.png")));
+	    	btnConsultar = new JButton(new ImageIcon(getClass().getResource("/Data/search.png")));
 	    	btnConsultar.setActionCommand(CONSULTAR);
 	    	btnConsultar.addActionListener(this);
 	    	btnConsultar.setToolTipText("Consulta uno o varios registros en la base de datos.");
 	    	
-	    	btnActualizar = new JButton(new ImageIcon(getClass().getResource("/Data/if_update_172618.png")));
+	    	btnActualizar = new JButton(new ImageIcon(getClass().getResource("/Data/update64.png")));
 	    	btnActualizar.setActionCommand(ACTUALIZAR);
 	    	btnActualizar.addActionListener(this);
 	    	btnActualizar.setToolTipText("Actualiza un registro en la base de datos.");
@@ -218,13 +218,13 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    	mitadMedia.add(btnConsultar);
 	    	
 	    	
-	    	btnTabla = new JButton(new ImageIcon(getClass().getResource("/Data/if_document_1055071.png")));
+	    	btnTabla = new JButton(new ImageIcon(getClass().getResource("/Data/article.png")));
 	    	btnTabla.setSize(265, 85);
 	    	btnTabla.setActionCommand(ARCHIVOS);
 	    	btnTabla.addActionListener(this);
 	    	btnTabla.setToolTipText("Seleccionar la tabla de ARTICULOS.");
 	    	
-	    	btnUsuario = new JButton(new ImageIcon(getClass().getResource("/Data/if_JD-06_2625478.png")));
+	    	btnUsuario = new JButton(new ImageIcon(getClass().getResource("/Data/users.png")));
 	    	btnUsuario.setSize(265, 85);
 	    	btnUsuario.setActionCommand(USUARIO);
 	    	btnUsuario.addActionListener(this);
