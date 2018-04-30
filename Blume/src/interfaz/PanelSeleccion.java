@@ -111,9 +111,10 @@ public class PanelSeleccion extends JPanel implements ActionListener{
 	    private String ip = "";
 	    
 	    
-	    public PanelSeleccion(InterfazPrincipal ia, String  ip)
+	    public PanelSeleccion(InterfazPrincipal ia, String  pIp)
 	    {
 	    	interfaz = ia;
+	    	ip = pIp;
 	    	
 	    	setBorder(new TitledBorder(BorderFactory.createTitledBorder("Informacion")));
 	    	setLayout(new BorderLayout());
