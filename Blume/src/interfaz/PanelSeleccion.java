@@ -436,7 +436,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				{
 					mensaje.funcionArticulo(funcion, 0, "", "", "");
 				}
-				else if(txtId_Articulo.getText().equals(null)) // ;3
+				else if(txtId_Articulo.getText().trim().equals("")) // ;3
 				{
 					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
 				}
@@ -444,42 +444,81 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				{
 					if(funcion.equals(Funcion.INSERT) || funcion.equals(Funcion.UPDATE))
 					{
-					//////fecha del Sistema 
-						java.util.Date sistema = new Date();
-						String data = sistema.toString();
-						String[] f = data.split(" ");
-						int sdia = Integer.parseInt(f[2]);
-						int smes = sistema.getMonth() + 1;
-						int sano = Integer.parseInt(f[5]);
-						
-						////fecha del Calendario interfaz
-						String an = txtFecha_Publicacion.getDate().toString();
-						String[] a = an.split(" ");
-						String dia = a[2];
-						String mes = a[1];
-						String ano = a[5];
-						
-						//se hace el int del mes para compararlo con el del sistema
-						int mesp = txtFecha_Publicacion.getDate().getMonth() +1;
-						
-						if(Integer.parseInt(dia) > sdia  || mesp > smes || Integer.parseInt(ano) > sano)   
+						if(txtTitulo.getText().trim().equals("") || txtAutor.getText().trim().equals(""))
 						{
-							throw new Exception ("Debe ingresar una fecha que no sobre pase la de hoy.");
+							throw new Exception ("Una de las casillas de registro está en blanco.");
 						}
 						
-						int id = Integer.parseInt(txtId_Articulo.getText());
-						String titulo = txtTitulo.getText();
-						String autor = txtAutor.getText();
-						
-						String fecha = dia + "/" + mes + "/" + ano;
-						
-						mensaje.funcionArticulo(funcion, id, titulo, autor, fecha);
+						try
+						{
+							//////fecha del Sistema 
+							java.util.Date sistema = new Date();
+							String data = sistema.toString();
+							String[] f = data.split(" ");
+							int sdia = Integer.parseInt(f[2]);
+							int smes = sistema.getMonth() + 1;
+							int sano = Integer.parseInt(f[5]);			
+							
+							if(txtFecha_Publicacion.getDate() == null)
+							{
+								throw new Exception("Debe ingresar una fecha no vacía o válida.");
+							}
+							////fecha del Calendario interfaz
+							String an = txtFecha_Publicacion.getDate().toString();
+							String[] a = an.split(" ");
+							String dia = a[2];
+							String mes = a[1];
+							String ano = a[5];
+							//se hace el int del mes para compararlo con el del sistema
+							int mesp = txtFecha_Publicacion.getDate().getMonth() +1;
+							
 
+							if(Integer.parseInt(dia) > sdia  || mesp > smes || Integer.parseInt(ano) > sano)   
+							{
+								throw new Exception ("Debe ingresar una fecha que no sobre pase la de hoy.");
+							}
+							
+							try
+							{
+								int id = Integer.parseInt(txtId_Articulo.getText());
+								String titulo = txtTitulo.getText();
+								String autor = txtAutor.getText();
+								
+								String fecha = dia + "/" + mes + "/" + ano;
+								
+								mensaje.funcionArticulo(funcion, id, titulo, autor, fecha);
+							}
+							catch (Exception e )
+							{
+								throw new Exception("Debe ingresar un número como ID.");
+							}
+						}
+						catch (Exception m) 
+						{
+							throw new Exception(m.getMessage());
+//							if(m.getMessage().contains("Debe"))
+//							{
+//								throw new Exception(m.getMessage());
+//							}
+//							else 
+//							{
+//								throw new Exception("Debe ingresar una fecha no vacía o válida.");
+//							}
+							
+						}
 					}
 					else
 					{
-						int id = Integer.parseInt(txtId_Articulo.getText());
-						mensaje.funcionArticulo(funcion, id, "", "", "");
+						try
+						{
+							int id = Integer.parseInt(txtId_Articulo.getText());
+							mensaje.funcionArticulo(funcion, id, "", "", "");
+						}
+						catch (Exception e )
+						{
+							throw new Exception("Debe ingresar un número como ID.");
+						}
+						
 
 					}
 							
