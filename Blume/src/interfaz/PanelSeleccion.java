@@ -1,6 +1,8 @@
 package interfaz;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -49,7 +51,7 @@ import mundo.test.Nodo;
 import mundo.test.Tabla;
 import mundo.facade.Facade;
 
-public class PanelSeleccion extends JPanel implements ActionListener {
+public class PanelSeleccion extends JPanel implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -112,6 +114,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 	    public PanelSeleccion(InterfazPrincipal ia, String  ip)
 	    {
 	    	interfaz = ia;
+	    	
 	    	setBorder(new TitledBorder(BorderFactory.createTitledBorder("Informacion")));
 	    	setLayout(new BorderLayout());
 	    		    	
@@ -381,7 +384,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 					JOptionPane.showMessageDialog(null, "Se ha producido un error: "+ "\n" + e.getMessage());
 				}
 			}		
-			
+
 			if(CANCELAR.equals(comando))
 			{
 				estadoInicial();
@@ -524,6 +527,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 					}
 							
 				}
+				
 			}
 			else
 			{
@@ -618,5 +622,6 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 			}
 			
 		}
-	
+		
+		
 }
