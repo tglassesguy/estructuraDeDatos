@@ -92,12 +92,10 @@ public class BarraMenu extends JMenuBar implements ActionListener
         // TODO Parte7 PuntoI. Inicialice todos los nuevos items y agreguelos a la barra.
         // Verifique que la interfaz luzca como en el documento de descripción.
 
-        menuArchivo = new JMenu( "Clickeame :3" );
+        menuArchivo = new JMenu( "Info" );
         add( menuArchivo );
 
-        itemInfo = new JMenuItem("Desarroladores: ");
-        itemInfo.setActionCommand(DESARROLLADORES);
-        itemInfo.addActionListener(this);
+        itemInfo = new JMenuItem("Desarrolladores: ");
         menuArchivo.addSeparator();
         menuArchivo.add( itemInfo );
        

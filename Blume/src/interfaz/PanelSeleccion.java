@@ -340,6 +340,7 @@ public class PanelSeleccion extends JPanel implements ActionListener{
 				btnTabla.setEnabled(false);
 				activarFormulario();
 			}
+			
 			if(ARCHIVOS.equals(comando))
 			{
 				tabla = Tabla.ARTICULOS;
@@ -350,6 +351,7 @@ public class PanelSeleccion extends JPanel implements ActionListener{
 			if(EJECUCION.equals(comando)) 
 			{
 				try {
+					
 					Mensaje m = crearMensaje();
 					
 					if(funcion.equals(Funcion.SELECT) || funcion.equals(Funcion.SELECT_ID))
@@ -396,7 +398,15 @@ public class PanelSeleccion extends JPanel implements ActionListener{
 		{
 			Mensaje mensaje = new Mensaje();
 			
-			if(tabla.equals(Tabla.USUARIOS))
+			if (funcion == null)
+			{
+				throw new Exception("Debe indicar una operación.");
+			}
+			else if(tabla  == null)
+			{
+				throw new Exception("Debe indicar una tabla para realizar la operación.");
+			}
+			else if(tabla.equals(Tabla.USUARIOS))
 			{
 				if(funcion.equals(Funcion.SELECT))
 				{
@@ -529,11 +539,6 @@ public class PanelSeleccion extends JPanel implements ActionListener{
 				}
 				
 			}
-			else
-			{
-				throw new Exception("Debe indicar una tabla para realizar la operación.");
-			}
-			
 			return mensaje;
 			
 		}
