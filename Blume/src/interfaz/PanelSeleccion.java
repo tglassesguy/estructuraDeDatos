@@ -268,7 +268,7 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 		{
 			// TODO Auto-generated method stub
 			String comando = evento.getActionCommand( );
-			Usuario user= new Usuario();
+			Usuario user = new Usuario();
 				
 			if(INSERTAR.equals(comando) )
 			{
@@ -509,8 +509,6 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 						{
 							throw new Exception("Debe ingresar un número como ID.");
 						}
-						
-
 					}
 							
 				}
