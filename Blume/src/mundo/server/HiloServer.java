@@ -1,4 +1,4 @@
-package mundo.serverTest;
+package mundo.server;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import mundo.serverTest.Server;
+import mundo.server.Server;
 
 public class InterfazServer extends JFrame
 {

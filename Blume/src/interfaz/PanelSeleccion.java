@@ -496,15 +496,6 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 						catch (Exception m) 
 						{
 							throw new Exception(m.getMessage());
-//							if(m.getMessage().contains("Debe"))
-//							{
-//								throw new Exception(m.getMessage());
-//							}
-//							else 
-//							{
-//								throw new Exception("Debe ingresar una fecha no vacía o válida.");
-//							}
-							
 						}
 					}
 					else
