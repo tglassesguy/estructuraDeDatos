@@ -403,29 +403,41 @@ public class PanelSeleccion extends JPanel implements ActionListener {
 				{
 					throw new Exception ("Debe ingresar un ID para ejecutar una función.");
 				}
-				else if( funcion.equals(Funcion.INSERT) || funcion.equals(funcion.UPDATE))
-				{
-					if(txtNombre.getText().trim().equals("") || txtUserName.getText().trim().equals("") || txtPais.getText().trim().equals(""))
-					{
-						throw new Exception ("Una de las casillas de registro está en blanco.");
-					}
-				}
 				else
 				{
-					try
+					if( funcion.equals(Funcion.INSERT) || funcion.equals(funcion.UPDATE))
 					{
-						int id = Integer.parseInt(txtID.getText().trim());
-						String nombre = txtNombre.getText().trim();
-						String userName = txtUserName.getText().trim();
-						String pais = txtPais.getText().trim();
+						if(txtNombre.getText().trim().equals("") || txtUserName.getText().trim().equals("") || txtPais.getText().trim().equals(""))
+						{
+							throw new Exception ("Una de las casillas de registro está en blanco.");
+						}
 						
-						mensaje.funcionUsuario(funcion, id, userName, nombre, pais);
+						try
+						{
+							int id = Integer.parseInt(txtID.getText().trim());
+							String nombre = txtNombre.getText().trim();
+							String userName = txtUserName.getText().trim();
+							String pais = txtPais.getText().trim();
+							
+							mensaje.funcionUsuario(funcion, id, userName, nombre, pais);
+						}
+						catch (Exception e)
+						{
+							throw new Exception ("Debe ingresar un número como ID.");
+						}
 					}
-					catch (Exception e)
+					else
 					{
-						throw new Exception ("Debe ingresar un número como ID.");
+						try 
+						{
+							int id = Integer.parseInt(txtID.getText().trim());
+							mensaje.funcionUsuario(funcion, id, "", "", "");
+						}
+						catch (Exception e)
+						{
+							throw new Exception ("Debe ingresar un número como ID.");
+						}
 					}
-					
 				}
 				
 			}
