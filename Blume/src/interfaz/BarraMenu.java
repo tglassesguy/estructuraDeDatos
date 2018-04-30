@@ -96,6 +96,8 @@ public class BarraMenu extends JMenuBar implements ActionListener
         add( menuArchivo );
 
         itemInfo = new JMenuItem("Desarrolladores: ");
+        itemInfo.setActionCommand(DESARROLLADORES);
+        itemInfo.addActionListener(this);
         menuArchivo.addSeparator();
         menuArchivo.add( itemInfo );
        
